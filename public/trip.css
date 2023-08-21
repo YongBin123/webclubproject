@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative; /* 푸터의 위치를 설정하기 위해 상대 위치로 변경 */
+}
+
+.container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    position: relative; /* header 요소 내의 절대 위치를 위해 상대 위치로 변경 */
+    z-index: 1; /* 다른 요소보다 앞에 표시되도록 z-index 설정 */
+}
+
+.container .header h1 a {
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-left: 30px;
+    text-decoration: none;
+    color: rgb(227, 112, 35);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute; 
+    left: 9%;
+    top: 30%; 
+    transform: translate(-50%, -50%); 
+}
+
+.container .search {
+    width: 400px;
+    margin-left: 400px;
+    margin-bottom: 5px;
+}
+
+#searchTerm {
+    width: 220px;
+    height: 30px;
+    margin-top: 7px;
+    margin-left: 10px;
+    padding: 8px;
+    border: 2px solid #e0981a;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+#searchButton {
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #f5a206;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+.credentials {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#id, #password {
+    padding: 8px;
+    width: 100px;
+    height: 30px;
+    margin-right: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+#loginButton {
+    width: 60px;
+    height: 30px;
+    padding: 5px;
+    background-color: #516b87;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+#signupButton {
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    background-color: #366b9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+#loginButton:hover, #signupButton:hover {
+    background-color: #0056b3;
+}
+
+.header .nav {
+    width: 700px;
+    align-items: center;
+    color: rgb(13, 13, 13);
+    text-align: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 20px; /* 상단 여백을 20px로 변경 */
+}
+
+.header .nav ul {
+    white-space: nowrap;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .nav ul li {
+    list-style: none;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.article .menu {
+    width: 1490px;
+    height: 45px;
+    /*background-color: #f2d6a5;*/
+    font-weight: 600;
+    margin-top: 15px;
+    margin-left: 15px;
+    border-radius: 15px;
+    border: 1px solid #e4350d;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.article .menu .nav {
+    display: inline-block;
+    align-items: center;
+    color: rgb(9, 9, 9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.article .menu .nav ul {
+    white-space: nowrap;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article .menu .nav ul li {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.article .menu .nav ul li a {
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    display: block;
+    padding-left: 10px;
+}
+
+.article .menu .nav ul li a:hover {
+    color: #1fdfdf;
+    transform: scale(1.1);
+}
+
+.article .photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
+    gap: 30px; /* 요소 사이의 간격 설정 */
+    margin-top: 25px;
+    margin-left: 45px;
+}
+
+.article .photo-container .photo {
+    width: calc(25% - 30px); /* 4개의 요소가 있으므로 25% */
+    margin-bottom: 30px; /* 요소 아래 마진 설정 */
+}
+
+.article .photo-container .photo img {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.article .photo-container .photo p {
+    text-align: center;
+    font-weight: 600;
+}
+
+/*
+.article .tripmenu {
+    width: 900px;
+    height: 45px;
+    background-color: #f2d6a5;
+    margin-left: 350px;
+    border-radius: 15px;
+    border: 1px solid #e4350d;
+    text-align: center;
+}
+
+.article .tripmenu .nav2 {
+    display: inline-block;
+    align-items: center;
+    color: rgb(9, 9, 9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.article .tripmenu .nav2 ul {
+    white-space: nowrap;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article .tripmenu .nav2 ul li {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.article .tripmenu .nav2 ul li a {
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    display: block;
+    padding-left: 10px;
+}
+
+.article .tripmenu .nav2 ul li a:hover {
+    color: #1fdfdf;
+    transform: scale(1.1);
+}
+*/
+
+/*
+                    <li class="nav-item"><a href="#" onclick="memo()">여행메모</a></li>
+                    <li class="nav-item"><a href="#" onclick="packing()">여행패킹리스트</a></li>
+                    <li class="nav-item"><a href="#" onclick="plan()">여행플래너</a></li>
+                    <li class="nav-item"><a href="#" onclick="review()">여행지리뷰</a></li>
+                    <li class="nav-item"><a href="#" onclick="community()">여행지커뮤니티</a></li>
+                    <li class="nav-item"><a href="#" onclick="quiz()">여행퀴즈이벤트</a></li>
+                    <li class="nav-item"><a href="#" onclick="guide()">사용가이드</a></li>
+*/

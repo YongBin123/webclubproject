@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 20px;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+#before {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    left: 1%;
+}
+
+#submit {
+    background-color: #4CAF50;
+    margin-top: 10px;
+}
+
+#submit:hover {
+    background-color: #45A242;
+    transform: scale(1.1);
+}
+
+#delete {
+    background-color: #ff9800;
+    margin-top: 10px;
+}
+
+#delete:hover {
+    background-color: #f78820;
+    transform: scale(1.1);
+}
+
+.review-form {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 97.5%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    resize: none;
+    margin-top: 5px;
+}
+
+#review {
+    height: 50px;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.star {
+    font-size: 20px;
+    color: #bab9b3;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star.active {
+    color: #ffd700;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #45A242;
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    color: #ff9800;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    color: #f78820;
+    transform: scale(1.1);
+}
+
+.review-list {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.review-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.review-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-list li .star-rating {
+    display: flex;
+}
+
+.review-list li .star {
+    font-size: 20px;
+    color: #bab9b3;
+    margin-right: 3px;
+}
+
+.review-list li .star.active {
+    color: #ffd700;
+}
+
+.review-list li .delete-btn {
+    color: #f4746b;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}

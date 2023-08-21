@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행지 추천 사이트</title>
+    <link rel="stylesheet" href="trip.css">
+    <script src="trip.js"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><a href="#">LETSGOTRIP</a></h1>
+        <div class="search">
+            <input type="text" id="searchTerm" placeholder="주소를 알고 싶은 여행지를 쓰세요." autocomplete="off">
+            <button id ="searchButton" onclick="search()">검색</button>
+        </div>
+        <div class="credentials">
+            <input type="text" id="id" placeholder="아이디" autocomplete="off">
+            <input type="password" id="password" placeholder="비밀번호" autocomplete="off">
+            <button id="loginButton" onclick="login()">로그인</button>
+            <button id="signupButton" onclick="join()">회원가입</button>
+        </div>
+    </header>   
+    <article class="article">
+        <div class="menu">
+            <div class="nav">
+                <ul id="nav_list">
+                    <li class="nav-item"><a href="#" onclick="displayMainInfo()">지역별 1위 여행지</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayAmusementParkInfo()">놀이동산/테마파크</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayHistoryInfo()">역사관광지/문화유산</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayAnimalPlantInfo()">동물원/식물원/수목원</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">박물관/과학관</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">아쿠아리움</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">공원</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">워터파크</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">해수욕장/해변</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">체험/관람</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">휴양림/산/섬</a></li>
+                <ul>    
+            </div>
+        </div>     
+        <div class="photo-container">
+            <div class="photo">
+                <a href="https://www.lotteworld.com/gate.html">
+                    <img src="images/lotte.jpeg" alt="롯데월드" class="photo">
+                </a>
+                <p>서울 추천 1위 여행지<br><br>롯데월드</p>
+            </div>
+            <div class="photo">
+                <a href="https://www.everland.com/web/everland/main.html">
+                    <img src="images/everland.jpg" alt="에버랜드" class="photo">
+                </a>
+                <p>경기도/인천 추천 1위 여행지<br><br>에버랜드</p>
+            </div>
+            <div class="photo">
+                <a href="https://www.oworld.kr/newkfsweb/kfs/dcco/dccoMainindex.do">
+                    <img src="images/oworld.jpeg" alt="대전오월드" class="photo">
+                </a>
+                <p>대전/세종/충청도 추천 1위 여행지<br><br>대전오월드</p>
+            </div>
+            <div class="photo">
+                <a href="https://www.visitsealife.com/busan/">
+                    <img src="images/sealife.jpg" alt="씨라이프부산아쿠아리움" class="photo">
+                </a>
+                <p>부산/울산 추천 1위 여행지<br><br>씨라이프부산아쿠아리움</p>
+            </div>
+            <div class="photo">
+                <a href="https://eworld.kr/">
+                    <img src="images/e.webp" alt="이월드" class="photo">
+                </a>
+                <p>대구/경상도 추천 1위 여행지<br><br>이월드</p>
+            </div>
+            <div class="photo">
+                <a href="https://eworld.kr/">
+                    <img src="images/cablecar.JPG" alt="여수해상케이블카" class="photo">
+                </a>
+                <p>광주/전라도 추천 1위 여행지<br><br>여수해상케이블카</p>
+            </div>
+            <div class="photo">
+                <img src="images/nami.jpeg" alt="Photo 7" class="photo">
+                <p>강원도 추천 1위 여행지<br><br>남이섬</p>
+            </div>
+            <div class="photo">
+                <img src="images/hill.jpeg" alt="Photo 8" class="photo">
+                <p>제주도 추천 1위 여행지<br><br>카멜리아힐</p>
+            </div>
+        </div>
+    </article>
+</div>
+</body>
+</html>
