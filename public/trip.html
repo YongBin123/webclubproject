@@ -26,32 +26,37 @@
         <div class="menu">
             <div class="nav">
                 <ul id="nav_list">
-                    <li class="nav-item"><a href="#" onclick="displayMainInfo()">지역별 1위 여행지</a></li>
+                    <div class="hamburger" onclick="toggleNav()">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <li class="nav-item"><a href="#" onclick="displayFirstInfo()">시도별 1위 여행지</a></li>
                     <li class="nav-item"><a href="#" onclick="displayAmusementParkInfo()">놀이동산/테마파크</a></li>
                     <li class="nav-item"><a href="#" onclick="displayHistoryInfo()">역사관광지/문화유산</a></li>
                     <li class="nav-item"><a href="#" onclick="displayAnimalPlantInfo()">동물원/식물원/수목원</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">박물관/과학관</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">아쿠아리움</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">공원</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">워터파크</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">해수욕장/해변</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">체험/관람</a></li>
-                    <li class="nav-item"><a href="#" onclick="displayThemeParkInfo()">휴양림/산/섬</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayMuseumInfo()">박물관/과학관</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayAquariumInfo()">아쿠아리움</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayParkInfo()">공원</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayWaterParkInfo()">워터파크</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayBeachInfo()">해수욕장/해변</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayExperienceInfo()">체험/관람</a></li>
+                    <li class="nav-item"><a href="#" onclick="displayMountainInfo()">휴양림/산/섬</a></li>
                 <ul>    
             </div>
         </div>     
         <div class="photo-container">
             <div class="photo">
-                <a href="https://www.lotteworld.com/gate.html">
-                    <img src="images/lotte.jpeg" alt="롯데월드" class="photo">
-                </a>
-                <p>서울 추천 1위 여행지<br><br>롯데월드</p>
-            </div>
-            <div class="photo">
                 <a href="https://www.everland.com/web/everland/main.html">
                     <img src="images/everland.jpg" alt="에버랜드" class="photo">
                 </a>
                 <p>경기도/인천 추천 1위 여행지<br><br>에버랜드</p>
+            </div>
+            <div class="photo">
+                <a href="https://www.lotteworld.com/gate.html">
+                    <img src="images/lotte.jpeg" alt="롯데월드" class="photo">
+                </a>
+                <p>서울 추천 1위 여행지<br><br>롯데월드</p>
             </div>
             <div class="photo">
                 <a href="https://www.oworld.kr/newkfsweb/kfs/dcco/dccoMainindex.do">
@@ -85,6 +90,17 @@
                 <img src="images/hill.jpeg" alt="Photo 8" class="photo">
                 <p>제주도 추천 1위 여행지<br><br>카멜리아힐</p>
             </div>
+        </div>
+        <div class="main-container">
+            <ul class ="nav_list1" id="navList1">
+                <li class="nav-item"><a href="#" onclick="quiz()">여행 퀴즈 이벤트</a></li>
+                <li class="nav-item"><a href="#" onclick="packing()">여행 패킹 리스트</a></li>
+                <li class="nav-item"><a href="#" onclick="memo()">여행 메모</a></li>
+                <li class="nav-item"><a href="#" onclick="plan()">여행 플래너</a></li>
+                <li class="nav-item"><a href="#" onclick="review()">여행지 리뷰</a></li>
+                <li class="nav-item"><a href="#" onclick="community()">여행 커뮤니티</a></li>
+            </ul>
+        </div>
         </div>
     </article>
 </div>
