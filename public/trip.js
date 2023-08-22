@@ -31,16 +31,15 @@ function guide() {
   location.href = "guide.html";
 }
 
-function displayMainInfo() {
-  location.href = "trip.html";
+function join() {
+  location.href = "join.html";
 }
-
 
 function displayFirstInfo() {
   const firstPhotos = [
     {
       imageSrc: 'images/lotte.jpeg',
-      title: '서울 (롯데월드)',
+      title: '서울 (롯데월드 어드벤처)',
       description: '서울 송파구 올림픽로 240',
       website: 'https://www.lotteworld.com/gate.html'
     },

@@ -203,7 +203,7 @@
     text-align: center;
     font-size: 15px;
     margin-top: 1px;
-    margin-left: 10px;
+    margin-left: 7px;
     padding-left: 10px;
 }
 
@@ -221,7 +221,6 @@
 
 .container .nav_list1 {
     width: 200px;
-    height: 500px;
     background-color: #f3c77c;
     margin-left: 15px;
     border-radius: 10px;
