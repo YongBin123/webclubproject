@@ -3,6 +3,46 @@ function toggleNav() {
   navList.classList.toggle('active');
 }
 
+const allTravelInfos = [
+  ...animalPlantPhotos,
+  ...amusementParkPhotos,
+  ...historyPhotos,
+  
+];
+
+function search() {
+  const searchTerm = document.getElementById('searchTerm').value;
+
+  // 모든 여행지 정보를 포함한 배열 (allTravelInfos)을 검색하여 정보 찾기
+  const targetInfo = allTravelInfos.find(info => info.title === searchTerm);
+
+  if (targetInfo) {
+    const infoDiv = document.querySelector(`[data-title="${targetInfo.title}"]`);
+
+    if (infoDiv) {
+      infoDiv.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert('해당 여행지 정보를 찾을 수 없습니다.');
+    }
+  } else {
+    alert('해당 여행지 정보를 찾을 수 없습니다.');
+  }
+}
+
+function adjustFooterPosition() {
+  const footer = document.querySelector('.footer');
+  const isFooterVisible = footer.getBoundingClientRect().bottom > window.innerHeight;
+
+  if (isFooterVisible) {
+    footer.style.position = 'relative'; // 스크롤이 아래에 있는 경우, 기본 상대 위치 설정
+  } else {
+    footer.style.position = 'fixed'; // 스크롤이 footer 위로 올라온 경우, 화면 아래에 고정
+  }
+}
+
+// 스크롤 이벤트 리스너 등록
+window.addEventListener('scroll', adjustFooterPosition);
+
 function memo() {
   location.href = "memo.html";
 }
