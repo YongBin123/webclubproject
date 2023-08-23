@@ -3,46 +3,6 @@ function toggleNav() {
   navList.classList.toggle('active');
 }
 
-const allTravelInfos = [
-  ...animalPlantPhotos,
-  ...amusementParkPhotos,
-  ...historyPhotos,
-  
-];
-
-function search() {
-  const searchTerm = document.getElementById('searchTerm').value;
-
-  // 모든 여행지 정보를 포함한 배열 (allTravelInfos)을 검색하여 정보 찾기
-  const targetInfo = allTravelInfos.find(info => info.title === searchTerm);
-
-  if (targetInfo) {
-    const infoDiv = document.querySelector(`[data-title="${targetInfo.title}"]`);
-
-    if (infoDiv) {
-      infoDiv.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      alert('해당 여행지 정보를 찾을 수 없습니다.');
-    }
-  } else {
-    alert('해당 여행지 정보를 찾을 수 없습니다.');
-  }
-}
-
-function adjustFooterPosition() {
-  const footer = document.querySelector('.footer');
-  const isFooterVisible = footer.getBoundingClientRect().bottom > window.innerHeight;
-
-  if (isFooterVisible) {
-    footer.style.position = 'relative'; // 스크롤이 아래에 있는 경우, 기본 상대 위치 설정
-  } else {
-    footer.style.position = 'fixed'; // 스크롤이 footer 위로 올라온 경우, 화면 아래에 고정
-  }
-}
-
-// 스크롤 이벤트 리스너 등록
-window.addEventListener('scroll', adjustFooterPosition);
-
 function memo() {
   location.href = "memo.html";
 }
@@ -1175,3 +1135,21 @@ function displayMountainInfo() {
         photoContainer.appendChild(photoDiv);
     }
 }
+
+/*
+function search() {
+  const searchTerm = document.getElementById('searchTerm').value;
+  const searchResultElement = document.getElementById('searchResult');
+
+  // amusementParkPhotos에서 모든 title에서 검색어를 찾습니다.
+  const foundPhotos = amusementParkPhotos.filter(photoInfo => photoInfo.title.includes(searchTerm));
+
+  if (foundPhotos.length > 0) {
+    // 검색된 모든 여행지의 description을 검색 결과에 추가합니다.
+    const searchResults = foundPhotos.map(photoInfo => photoInfo.description).join('<br>');
+    searchResultElement.innerHTML = searchResults;
+  } else {
+    searchResultElement.innerHTML = '일치하는 여행지를 찾을 수 없습니다.';
+  }
+}
+*/
