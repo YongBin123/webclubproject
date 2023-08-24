@@ -3,6 +3,92 @@ function toggleNav() {
   navList.classList.toggle('active');
 }
 
+function search() {
+  const searchTerm = document.getElementById('searchTerm').value;
+  const amusementParkPhotos = [
+    { title: '에버랜드',
+      description: '경기 용인시 처인구 포곡읍 에버랜드로 199',
+    },
+    {
+      title: '롯데월드 어드벤처',
+      description: '서울 송파구 올림픽로 240',
+    },
+    {
+      title: '서울랜드',
+      description: '경기 과천시 광명로 181',
+    },  
+    {
+      title: '롯데월드 어드벤처 부산',
+      description: '부산 기장군 기장읍 동부산관광로 42',
+    },
+    {
+      title: '대전오월드',
+      description: '대전 중구 사정공원로 70',
+    },
+    {
+      title: '이월드',
+      description: '대구 달서구 두류공원로 200 이월드',
+    },
+    {
+      title: '광주패밀리랜드',
+      description: '광주 북구 우치로 677 광주패밀리랜드',
+    },
+    {
+      title: '경주월드',
+      description: '경북 경주시 보문로 544',
+    },      
+    {
+      title: '서울어린이대공원',
+      description: '서울 광진구 능동로 216',
+    },    
+    {
+      title: '서울대공원',
+      description: '경기 과천시 대공원광장로 102',
+    },    
+    {
+      title: '웅진플레이도시',
+      description: '경기 부천시 조마루로 2',
+    },
+    {
+      title: '안성팜랜드',
+      description: '경기 안성시 공도읍 대신두길 28',
+    },    
+    {
+      title: '해운대블루라인파크',
+      description: '부산 해운대구 청사포로 116 청사포정거장',
+    },    
+    {
+      title: '여수 유월드 루지 테마파크',
+      description: '전남 여수시 소라면 안심산길 155',
+    },
+    {
+      title: '하슬라아트월드',
+      description: '강원 강릉시 강동면 율곡로 1441',
+    },    
+    {
+      title: '에코랜드테마파크',
+      description: '제주 제주시 조천읍 번영로 1278-169',
+    }   
+  ];
+
+  let foundDescription = null;
+
+  for (const photoInfo of amusementParkPhotos.concat(historyPhotos, animalPlantPhotos)) {
+    if (photoInfo.title.includes(searchTerm)) {
+      foundDescription = photoInfo.description;
+      break; // 일치하는 title을 찾았으면 루프 종료
+    }
+  }
+
+  const searchResult = document.getElementById('searchResult');
+  
+  if (foundDescription !== null) {
+    searchResult.textContent = foundDescription;
+  } else {
+    searchResult.textContent = '일치하는 결과가 없습니다.';
+  }
+}
+
 function memo() {
   location.href = "memo.html";
 }
