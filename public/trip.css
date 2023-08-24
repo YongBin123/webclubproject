@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 90px;
+    height: 110px;
     background-color: #ffffff;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -78,11 +78,13 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 13px;
+    font-weight: bolder;
     transition: background-color 0.3s ease;
 }
 
 #searchButton:hover {
     background-color: #e08309;
+    transform: scale(1.1);
 }
 
 .credentials {
@@ -112,6 +114,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 13px;
+    font-weight: bolder;
     transition: background-color 0.3s ease;
     margin-left: 5px;
 }
@@ -126,12 +129,14 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 13px;
+    font-weight: bolder;
     transition: background-color 0.3s ease;
     margin-left: 5px;
 }
 
 #loginButton:hover, #signupButton:hover {
     background-color: #d69004;
+    transform: scale(1.1);
 }
 
 .hamburger {
@@ -187,10 +192,10 @@
     margin-top: 15px;
     margin-left: 15px;
     border-radius: 15px;
-    border: 1px solid #e4350d;
+    border: 2px solid #e4350d;
     text-align: center;
     overflow: hidden;
-    top: 90px; /* .header의 높이만큼 내려갔을 때 고정되도록 설정 */
+    top: 110px; /* .header의 높이만큼 내려갔을 때 고정되도록 설정 */
     z-index: 1;
 }
 
@@ -238,7 +243,7 @@
     border: 2px solid #f38d11;
     border-radius: 10px;
     position: fixed; /* 고정 위치로 설정 */
-    top: 20%; /* 화면 상단에 위치 */
+    top: 23%; /* 화면 상단에 위치 */
     right: -220px; /* 초기에는 화면 오른쪽 밖으로 숨김 */
     transition: right 0.3s ease; /* 애니메이션 효과 추가 */
 }
@@ -280,7 +285,93 @@
 
 .container .nav_list1 .nav-item:hover a {
   color: rgb(233, 39, 35);
+  transform: scale(1.1);
 }
+
+.article .photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
+    gap: 30px; /* 요소 사이의 간격 설정 */
+    margin-top: 125px;
+    margin-left: 45px;
+}
+
+.article .photo-container .photo {
+    width: calc(25% - 30px); /* 4개의 요소가 있으므로 25% */
+    margin-bottom: 30px; /* 요소 아래 마진 설정 */
+}
+
+.article .photo-container .photo img {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.article .photo-container .photo p {
+    text-align: center;
+    font-weight: 600;
+}
+
+/*
+.article .tripmenu {
+    width: 900px;
+    height: 45px;
+    background-color: #f2d6a5;
+    margin-left: 350px;
+    border-radius: 15px;
+    border: 1px solid #e4350d;
+    text-align: center;
+}
+
+.article .tripmenu .nav2 {
+    display: inline-block;
+    align-items: center;
+    color: rgb(9, 9, 9);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.article .tripmenu .nav2 ul {
+    white-space: nowrap;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article .tripmenu .nav2 ul li {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.article .tripmenu .nav2 ul li a {
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    display: block;
+    padding-left: 10px;
+}
+
+.article .tripmenu .nav2 ul li a:hover {
+    color: #1fdfdf;
+    transform: scale(1.1);
+}
+*/
+
+/*
+                    <li class="nav-item"><a href="#" onclick="memo()">여행메모</a></li>
+                    <li class="nav-item"><a href="#" onclick="packing()">여행패킹리스트</a></li>
+                    <li class="nav-item"><a href="#" onclick="plan()">여행플래너</a></li>
+                    <li class="nav-item"><a href="#" onclick="review()">여행지리뷰</a></li>
+                    <li class="nav-item"><a href="#" onclick="community()">여행지커뮤니티</a></li>
+                    <li class="nav-item"><a href="#" onclick="quiz()">여행퀴즈이벤트</a></li>
+                    <li class="nav-item"><a href="#" onclick="guide()">사용가이드</a></li>
+*/
 
 /*
 .welcome-message {
@@ -361,88 +452,3 @@
 }
 */
 
-
-.article .photo-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
-    gap: 30px; /* 요소 사이의 간격 설정 */
-    margin-top: 105px;
-    margin-left: 45px;
-}
-
-.article .photo-container .photo {
-    width: calc(25% - 30px); /* 4개의 요소가 있으므로 25% */
-    margin-bottom: 30px; /* 요소 아래 마진 설정 */
-}
-
-.article .photo-container .photo img {
-    width: 100%;
-    height: 300px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
-
-.article .photo-container .photo p {
-    text-align: center;
-    font-weight: 600;
-}
-
-/*
-.article .tripmenu {
-    width: 900px;
-    height: 45px;
-    background-color: #f2d6a5;
-    margin-left: 350px;
-    border-radius: 15px;
-    border: 1px solid #e4350d;
-    text-align: center;
-}
-
-.article .tripmenu .nav2 {
-    display: inline-block;
-    align-items: center;
-    color: rgb(9, 9, 9);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.article .tripmenu .nav2 ul {
-    white-space: nowrap;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.article .tripmenu .nav2 ul li {
-    display: inline-block;
-    list-style: none;
-    text-align: center;
-    font-size: 15px;
-    margin-top: 13px;
-    margin-left: 10px;
-    padding-left: 10px;
-}
-
-.article .tripmenu .nav2 ul li a {
-    text-decoration: none;
-    color: rgb(6, 6, 6);
-    display: block;
-    padding-left: 10px;
-}
-
-.article .tripmenu .nav2 ul li a:hover {
-    color: #1fdfdf;
-    transform: scale(1.1);
-}
-*/
-
-/*
-                    <li class="nav-item"><a href="#" onclick="memo()">여행메모</a></li>
-                    <li class="nav-item"><a href="#" onclick="packing()">여행패킹리스트</a></li>
-                    <li class="nav-item"><a href="#" onclick="plan()">여행플래너</a></li>
-                    <li class="nav-item"><a href="#" onclick="review()">여행지리뷰</a></li>
-                    <li class="nav-item"><a href="#" onclick="community()">여행지커뮤니티</a></li>
-                    <li class="nav-item"><a href="#" onclick="quiz()">여행퀴즈이벤트</a></li>
-                    <li class="nav-item"><a href="#" onclick="guide()">사용가이드</a></li>
-*/

@@ -1119,7 +1119,7 @@ function search() {
   searchTermElement.addEventListener('click', function() {
     searchTermElement.value = '';
     const searchResult = document.getElementById('searchResult');
-    searchResult.textContent = '검색한 여행지 주소가 이곳에 뜹니다.';
+    searchResult.textContent = '검색한 여행지의 주소가 이곳에 뜹니다.';
 });
 
 }
