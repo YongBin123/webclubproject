@@ -1114,6 +1114,14 @@ function search() {
   } else {
     searchResult.textContent = '일치하는 결과가 없습니다.';
   }
+
+  const searchTermElement = document.getElementById('searchTerm');
+  searchTermElement.addEventListener('click', function() {
+    searchTermElement.value = '';
+    const searchResult = document.getElementById('searchResult');
+    searchResult.textContent = '검색한 여행지 주소가 이곳에 뜹니다.';
+});
+
 }
 
 function memo() {
