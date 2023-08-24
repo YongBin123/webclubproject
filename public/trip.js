@@ -3,235 +3,106 @@ function toggleNav() {
   navList.classList.toggle('active');
 }
 
-function search() {
-  const searchTerm = document.getElementById('searchTerm').value;
-  const amusementParkPhotos = [
-    { title: '에버랜드',
-      description: '경기 용인시 처인구 포곡읍 에버랜드로 199',
-    },
-    {
-      title: '롯데월드 어드벤처',
-      description: '서울 송파구 올림픽로 240',
-    },
-    {
-      title: '서울랜드',
-      description: '경기 과천시 광명로 181',
-    },  
-    {
-      title: '롯데월드 어드벤처 부산',
-      description: '부산 기장군 기장읍 동부산관광로 42',
-    },
-    {
-      title: '대전오월드',
-      description: '대전 중구 사정공원로 70',
-    },
-    {
-      title: '이월드',
-      description: '대구 달서구 두류공원로 200 이월드',
-    },
-    {
-      title: '광주패밀리랜드',
-      description: '광주 북구 우치로 677 광주패밀리랜드',
-    },
-    {
-      title: '경주월드',
-      description: '경북 경주시 보문로 544',
-    },      
-    {
-      title: '서울어린이대공원',
-      description: '서울 광진구 능동로 216',
-    },    
-    {
-      title: '서울대공원',
-      description: '경기 과천시 대공원광장로 102',
-    },    
-    {
-      title: '웅진플레이도시',
-      description: '경기 부천시 조마루로 2',
-    },
-    {
-      title: '안성팜랜드',
-      description: '경기 안성시 공도읍 대신두길 28',
-    },    
-    {
-      title: '해운대블루라인파크',
-      description: '부산 해운대구 청사포로 116 청사포정거장',
-    },    
-    {
-      title: '여수 유월드 루지 테마파크',
-      description: '전남 여수시 소라면 안심산길 155',
-    },
-    {
-      title: '하슬라아트월드',
-      description: '강원 강릉시 강동면 율곡로 1441',
-    },    
-    {
-      title: '에코랜드테마파크',
-      description: '제주 제주시 조천읍 번영로 1278-169',
-    }   
+const firstPhotos = [
+  {
+    imageSrc: 'images/lotte.jpeg',
+    title: '서울 (롯데월드 어드벤처)',
+    description: '서울 송파구 올림픽로 240',
+    website: 'https://www.lotteworld.com/gate.html'
+  },
+  {
+    imageSrc: 'images/everland.jpg',
+    title: '경기도 (에버랜드)',
+    description: '경기 용인시 처인구 포곡읍 에버랜드로 199',
+    website: 'https://www.everland.com/web/everland/main.html'
+  },
+  {
+    imageSrc: 'images/chinatown.jpeg',
+    title: '인천 (차이나타운)',
+    description: '인천 중구 차이나타운로26번길 12-17',
+    website: 'http://ic-chinatown.co.kr/'
+  },    
+  {
+    imageSrc: 'images/oworld.jpeg',
+    title: '대전 (대전오월드)',
+    description: '대전 중구 사정공원로 70',
+    website: 'https://www.oworld.kr/newkfsweb/kfs/dcco/dccoMainindex.do'
+  },
+  {
+    imageSrc: 'images/sealife.jpg',
+    title: '부산 (씨라이프부산아쿠아리움)',
+    description: '부산 해운대구 해운대해변로 266',
+    website: 'https://www.visitsealife.com/busan/'
+  },         
+  {
+    imageSrc: 'images/daewangam.gif',
+    title: '울산 (대왕암공원)',
+    description: '울산 동구 일산동 산907',
+    website: 'https://daewangam.donggu.ulsan.kr/'
+  },    
+  {
+    imageSrc: 'images/e.webp',
+    title: '대구 (이월드)',
+    description: '대구 달서구 두류공원로 200 이월드',
+    website: 'https://eworld.kr/'
+  },
+  {
+    imageSrc: 'images/family.jpeg',
+    title: '광주 (광주패밀리랜드)',
+    description: '광주 북구 우치로 677 광주패밀리랜드',
+    website: 'http://gjfamilyland.com/'
+  }, 
+  {
+    imageSrc: 'images/dacheon.jpeg',
+    title: '충남 (대천해수욕장)',
+    description: '충남 보령시 신흑동',
+    website: 'http://daecheonbeach.kr/'
+  },
+  {
+    imageSrc: 'images/gosu.png',
+    title: '충북 (고수동굴)',
+    description: '충북 단양군 단양읍 고수동굴길 8 고수동굴',
+    website: 'http://www.gosucave.co.kr/'
+  },
+  {
+    imageSrc: 'images/lottewater.jpeg',
+    title: '경남 (롯데워터파크 김해)',
+    description: '경남 김해시 장유로 555',
+    website: 'https://www.lotteworld.com/waterpark/index.asp'
+  },    
+  {
+    imageSrc: 'images/bulguk.jpeg',
+    title: '경북 (불국사)',
+    description: '경북 경주시 보문로 544',
+    website: 'https://www.gjw.co.kr/'
+  },       
+  {
+    imageSrc: 'images/yeosucable.webp',
+    title: '전남 (여수해상케이블카)',
+    description: '전남 여수시 돌산읍 돌산로 3600-1',
+    website: 'http://yeosucablecar.com/'
+  },
+  {
+    imageSrc: 'images/hanok.jpeg',
+    title: '전북 (전주한옥마을)',
+    description: '전북 전주시 완산구 기린대로 99',
+    website: 'https://hanok.jeonju.go.kr/'
+  },    
+  {
+    imageSrc: 'images/nami.jpeg',
+    title: '강원 (남이섬)',
+    description: '강원 춘천시 남산면 남이섬길 1',
+    website: 'https://www.namisum.com/'
+  },
+  {
+    imageSrc: 'images/hill.jpeg',
+    title: '제주 (카멜리아힐)',
+    description: '제주 서귀포시 안덕면 병악로 166',
+    website: 'https://www.camelliahill.co.kr/'
+  }
   ];
 
-  let foundDescription = null;
-
-  for (const photoInfo of amusementParkPhotos.concat(historyPhotos, animalPlantPhotos)) {
-    if (photoInfo.title.includes(searchTerm)) {
-      foundDescription = photoInfo.description;
-      break; // 일치하는 title을 찾았으면 루프 종료
-    }
-  }
-
-  const searchResult = document.getElementById('searchResult');
-  
-  if (foundDescription !== null) {
-    searchResult.textContent = foundDescription;
-  } else {
-    searchResult.textContent = '일치하는 결과가 없습니다.';
-  }
-}
-
-function memo() {
-  location.href = "memo.html";
-}
-  
-function quiz() {
-  location.href = "quiz.html";
-}
-  
-function packing() {
-  location.href = "packing.html";
-}
-  
-function plan() {
-  location.href = "plan.html";
-}
-  
-function review() {
-  location.href = "review.html";
-}
-
-function community() {
-  location.href = "community.html";
-}
-
-function guide() {
-  location.href = "guide.html";
-}
-
-function join() {
-  location.href = "join.html";
-}
-
-function displayFirstInfo() {
-  const firstPhotos = [
-    {
-      imageSrc: 'images/lotte.jpeg',
-      title: '서울 (롯데월드 어드벤처)',
-      description: '서울 송파구 올림픽로 240',
-      website: 'https://www.lotteworld.com/gate.html'
-    },
-    {
-      imageSrc: 'images/everland.jpg',
-      title: '경기도 (에버랜드)',
-      description: '경기 용인시 처인구 포곡읍 에버랜드로 199',
-      website: 'https://www.everland.com/web/everland/main.html'
-    },
-    {
-      imageSrc: 'images/chinatown.jpeg',
-      title: '인천 (차이나타운)',
-      description: '인천 중구 차이나타운로26번길 12-17',
-      website: 'http://ic-chinatown.co.kr/'
-    },    
-    {
-      imageSrc: 'images/oworld.jpeg',
-      title: '대전 (대전오월드)',
-      description: '대전 중구 사정공원로 70',
-      website: 'https://www.oworld.kr/newkfsweb/kfs/dcco/dccoMainindex.do'
-    },
-    {
-      imageSrc: 'images/sealife.jpg',
-      title: '부산 (씨라이프부산아쿠아리움)',
-      description: '부산 해운대구 해운대해변로 266',
-      website: 'https://www.visitsealife.com/busan/'
-    },         
-    {
-      imageSrc: 'images/daewangam.gif',
-      title: '울산 (대왕암공원)',
-      description: '울산 동구 일산동 산907',
-      website: 'https://daewangam.donggu.ulsan.kr/'
-    },    
-    {
-      imageSrc: 'images/e.webp',
-      title: '대구 (이월드)',
-      description: '대구 달서구 두류공원로 200 이월드',
-      website: 'https://eworld.kr/'
-    },
-    {
-      imageSrc: 'images/family.jpeg',
-      title: '광주 (광주패밀리랜드)',
-      description: '광주 북구 우치로 677 광주패밀리랜드',
-      website: 'http://gjfamilyland.com/'
-    }, 
-    {
-      imageSrc: 'images/dacheon.jpeg',
-      title: '충남 (대천해수욕장)',
-      description: '충남 보령시 신흑동',
-      website: 'http://daecheonbeach.kr/'
-    },
-    {
-      imageSrc: 'images/gosu.png',
-      title: '충북 (고수동굴)',
-      description: '충북 단양군 단양읍 고수동굴길 8 고수동굴',
-      website: 'http://www.gosucave.co.kr/'
-    },
-    {
-      imageSrc: 'images/lottewater.jpeg',
-      title: '경남 (롯데워터파크 김해)',
-      description: '경남 김해시 장유로 555',
-      website: 'https://www.lotteworld.com/waterpark/index.asp'
-    },    
-    {
-      imageSrc: 'images/bulguk.jpeg',
-      title: '경북 (불국사)',
-      description: '경북 경주시 보문로 544',
-      website: 'https://www.gjw.co.kr/'
-    },       
-    {
-      imageSrc: 'images/yeosucable.webp',
-      title: '전남 (여수해상케이블카)',
-      description: '전남 여수시 돌산읍 돌산로 3600-1',
-      website: 'http://yeosucablecar.com/'
-    },
-    {
-      imageSrc: 'images/hanok.jpeg',
-      title: '전북 (전주한옥마을)',
-      description: '전북 전주시 완산구 기린대로 99',
-      website: 'https://hanok.jeonju.go.kr/'
-    },    
-    {
-      imageSrc: 'images/nami.jpeg',
-      title: '강원 (남이섬)',
-      description: '강원 춘천시 남산면 남이섬길 1',
-      website: 'https://www.namisum.com/'
-    },
-    {
-      imageSrc: 'images/hill.jpeg',
-      title: '제주 (카멜리아힐)',
-      description: '제주 서귀포시 안덕면 병악로 166',
-      website: 'https://www.camelliahill.co.kr/'
-    }
-    ];
-
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of firstPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayAmusementParkInfo() {
-  const amusementParkPhotos = [
+const amusementParkPhotos = [
     {
       imageSrc: 'images/everland.jpg',
       title: '에버랜드',
@@ -330,17 +201,7 @@ function displayAmusementParkInfo() {
     }   
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of amusementParkPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayHistoryInfo() {
-  const historyPhotos = [
+const historyPhotos = [
     {
       imageSrc: 'images/gung.jpg',
       title: '경복궁',
@@ -413,17 +274,7 @@ function displayHistoryInfo() {
     }
     ];
 
-  const photoContainer = document.querySelector('.photo-container');
-  photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-  for (const photoInfo of historyPhotos) {
-    const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-    photoContainer.appendChild(photoDiv);
-  }
-}
-
-function displayAnimalPlantInfo() {
-  const animalPlantPhotos = [
+const animalPlantPhotos = [
     {
       imageSrc: 'images/nature.jpeg',
       title: '네이처파크',
@@ -498,34 +349,7 @@ function displayAnimalPlantInfo() {
     }
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of animalPlantPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-
-function createPhotoDiv(imageSrc, title, description, website) {
-  const photoDiv = document.createElement('div');
-  photoDiv.classList.add('photo');
-
-  const photoLink = document.createElement('a');
-  photoLink.href = website; // 해당 사진의 홈페이지로 링크 설정
-  photoLink.innerHTML = `<img src="${imageSrc}" alt="Photo" class="photo">`;
-  photoDiv.appendChild(photoLink);
-
-  const descriptionParagraph = document.createElement('p');
-  descriptionParagraph.innerHTML = `${title}<br><br>${description}`;
-  photoDiv.appendChild(descriptionParagraph);
-
-  return photoDiv;
-}
-
-function displayMuseumInfo() {
-  const museumPhotos = [
+ const museumPhotos = [
     {
       imageSrc: 'images/moon.jpeg',
       title: '서대문형무소역사관',
@@ -600,17 +424,7 @@ function displayMuseumInfo() {
     }   
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of museumPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayAquariumInfo() {
-  const aquariumPhotos = [
+ const aquariumPhotos = [
     {
       imageSrc: 'images/coex.jpeg',
       title: '코엑스아쿠아리움',
@@ -685,17 +499,7 @@ function displayAquariumInfo() {
     }
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of aquariumPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayParkInfo() {
-  const parkPhotos = [
+const parkPhotos = [
     {
       imageSrc: 'images/hangang.jpg',
       title: '여의도한강공원',
@@ -769,17 +573,7 @@ function displayParkInfo() {
     }   
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of parkPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayWaterParkInfo() {
-  const aquariumPhotos = [
+  const waterparkPhotos = [
     {
       imageSrc: 'images/caribeean.jpeg',
       title: '캐리비안베이',
@@ -854,102 +648,7 @@ function displayWaterParkInfo() {
     }
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of aquariumPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayAquariumInfo() {
-  const aquariumPhotos = [
-    {
-      imageSrc: 'images/coex.jpeg',
-      title: '코엑스아쿠아리움',
-      description: '서울 강남구 영동대로 513',
-      website: 'https://www.coexaqua.com/'
-    },
-    {
-      imageSrc: 'images/aquailsan.png',
-      title: '아쿠아플라넷 일산',
-      description: '경기 고양시 일산서구 한류월드로 282 아쿠아플라넷 일산',
-      website: 'https://www.aquaplanet.co.kr/ilsan/index.do'
-    },
-    {
-      imageSrc: 'images/aquagwangwo.jpeg',
-      title: '아쿠아플라넷 광교',
-      description: '경기 수원시 영통구 광교호수공원로 300 갤러리아 광교 파사쥬 지하 1층',
-      website: 'https://www.aquaplanet.co.kr/gwanggyo/index.do'
-    },
-    {
-      imageSrc: 'images/expoaqua.jpeg',
-      title: '대전엑스포아쿠아리움',
-      description: '대전 유성구 엑스포로 1 대전 신세계 Art&Science 지하 1층',
-      website: 'http://www.djexpoaqua.com/'
-    },
-    {
-      imageSrc: 'images/dajeonaqua.jpeg',
-      title: '대전아쿠아리움',
-      description: '대전 중구 보문산공원로 469',
-      website: 'http://www.djaquarium.com/default/'
-    }, 
-    {
-      imageSrc: 'images/sealife.jpg',
-      title: '씨라이프부산아쿠아리움',
-      description: '부산 해운대구 해운대해변로 266',
-      website: 'https://www.visitsealife.com/busan/'
-    },    
-    {
-      imageSrc: 'images/daeguaqua.png',
-      title: '대구아쿠아리움',
-      description: '대구 동구 동부로 149 신세계백화점 대구점 9층',
-      website: 'https://daeguaqua.com/'
-    },
-    {
-      imageSrc: 'images/danuri.jpeg',
-      title: '다누리아쿠아리움',
-      description: '충북 단양군 단양읍 수변로 111 다누리아쿠아리움',
-      website: 'https://www.danyang.go.kr/aquarium/1383'
-    },       
-    {
-      imageSrc: 'images/aramaru.jpeg',
-      title: '아라마루 아쿠아리움',
-      description: '경남 사천시 사천대로 18',
-      website: 'https://aramaruaquarium.com/'
-    },
-    {
-      imageSrc: 'images/seaworld.jpeg',
-      title: '거제씨월드',
-      description: '경남 거제시 일운면 지세포해안로 15',
-      website: 'http://www.geojeseaworld.com/'
-    },    
-    {
-      imageSrc: 'images/aqua.webp',
-      title: '아쿠아플라넷 여수',
-      description: '전남 여수시 오동도로 61-11 아쿠아리움',
-      website: 'https://www.aquaplanet.co.kr/yeosu/index.do'
-    },
-    {
-      imageSrc: 'images/aquajeju.jpeg',
-      title: '아쿠아플라넷 제주',
-      description: '제주 서귀포시 성산읍 섭지코지로 95 아쿠아플라넷 제주',
-      website: 'https://www.aquaplanet.co.kr/jeju/index.do'
-    }
-    ];
-
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of aquariumPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayBeachInfo() {
-  const beachPhotos = [
+const beachPhotos = [
     {
       imageSrc: 'images/gwanganri.jpeg',
       title: '광안리해수욕장',
@@ -1022,17 +721,7 @@ function displayBeachInfo() {
     },    
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of beachPhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayExperienceInfo() {
-  const experiencePhotos = [
+const experiencePhotos = [
     {
       imageSrc: 'images/namsan.jpg',
       title: '남산서울타워',
@@ -1130,17 +819,7 @@ function displayExperienceInfo() {
     }
     ];
 
-    const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
-
-    for (const photoInfo of experiencePhotos) {
-        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
-    }
-}
-
-function displayMountainInfo() {
-  const mountainPhotos = [
+const mountainPhotos = [
     {
       imageSrc: 'images/yongin.jpeg',
       title: '용인자연휴양림',
@@ -1213,6 +892,182 @@ function displayMountainInfo() {
     }
     ];
 
+function displayFirstInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of firstPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayAmusementParkInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of amusementParkPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayHistoryInfo() {
+  const photoContainer = document.querySelector('.photo-container');
+  photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+  for (const photoInfo of historyPhotos) {
+    const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+    photoContainer.appendChild(photoDiv);
+  }
+}
+
+function displayAnimalPlantInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of animalPlantPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayMuseumInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of museumPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayParkInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of parkPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayWaterParkInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of waterparkPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayAquariumInfo() {
+  const aquariumPhotos = [
+    {
+      imageSrc: 'images/coex.jpeg',
+      title: '코엑스아쿠아리움',
+      description: '서울 강남구 영동대로 513',
+      website: 'https://www.coexaqua.com/'
+    },
+    {
+      imageSrc: 'images/aquailsan.png',
+      title: '아쿠아플라넷 일산',
+      description: '경기 고양시 일산서구 한류월드로 282 아쿠아플라넷 일산',
+      website: 'https://www.aquaplanet.co.kr/ilsan/index.do'
+    },
+    {
+      imageSrc: 'images/aquagwangwo.jpeg',
+      title: '아쿠아플라넷 광교',
+      description: '경기 수원시 영통구 광교호수공원로 300 갤러리아 광교 파사쥬 지하 1층',
+      website: 'https://www.aquaplanet.co.kr/gwanggyo/index.do'
+    },
+    {
+      imageSrc: 'images/expoaqua.jpeg',
+      title: '대전엑스포아쿠아리움',
+      description: '대전 유성구 엑스포로 1 대전 신세계 Art&Science 지하 1층',
+      website: 'http://www.djexpoaqua.com/'
+    },
+    {
+      imageSrc: 'images/dajeonaqua.jpeg',
+      title: '대전아쿠아리움',
+      description: '대전 중구 보문산공원로 469',
+      website: 'http://www.djaquarium.com/default/'
+    }, 
+    {
+      imageSrc: 'images/sealife.jpg',
+      title: '씨라이프부산아쿠아리움',
+      description: '부산 해운대구 해운대해변로 266',
+      website: 'https://www.visitsealife.com/busan/'
+    },    
+    {
+      imageSrc: 'images/daeguaqua.png',
+      title: '대구아쿠아리움',
+      description: '대구 동구 동부로 149 신세계백화점 대구점 9층',
+      website: 'https://daeguaqua.com/'
+    },
+    {
+      imageSrc: 'images/danuri.jpeg',
+      title: '다누리아쿠아리움',
+      description: '충북 단양군 단양읍 수변로 111 다누리아쿠아리움',
+      website: 'https://www.danyang.go.kr/aquarium/1383'
+    },       
+    {
+      imageSrc: 'images/aramaru.jpeg',
+      title: '아라마루 아쿠아리움',
+      description: '경남 사천시 사천대로 18',
+      website: 'https://aramaruaquarium.com/'
+    },
+    {
+      imageSrc: 'images/seaworld.jpeg',
+      title: '거제씨월드',
+      description: '경남 거제시 일운면 지세포해안로 15',
+      website: 'http://www.geojeseaworld.com/'
+    },    
+    {
+      imageSrc: 'images/aqua.webp',
+      title: '아쿠아플라넷 여수',
+      description: '전남 여수시 오동도로 61-11 아쿠아리움',
+      website: 'https://www.aquaplanet.co.kr/yeosu/index.do'
+    },
+    {
+      imageSrc: 'images/aquajeju.jpeg',
+      title: '아쿠아플라넷 제주',
+      description: '제주 서귀포시 성산읍 섭지코지로 95 아쿠아플라넷 제주',
+      website: 'https://www.aquaplanet.co.kr/jeju/index.do'
+    }
+    ];
+
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of aquariumPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayBeachInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of beachPhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayExperienceInfo() {
+    const photoContainer = document.querySelector('.photo-container');
+    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+
+    for (const photoInfo of experiencePhotos) {
+        const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
+        photoContainer.appendChild(photoDiv);
+    }
+}
+
+function displayMountainInfo() {
     const photoContainer = document.querySelector('.photo-container');
     photoContainer.innerHTML = ''; // 기존 내용을 초기화
 
@@ -1222,20 +1077,73 @@ function displayMountainInfo() {
     }
 }
 
-/*
+function createPhotoDiv(imageSrc, title, description, website) {
+  const photoDiv = document.createElement('div');
+  photoDiv.classList.add('photo');
+
+  const photoLink = document.createElement('a');
+  photoLink.href = website; // 해당 사진의 홈페이지로 링크 설정
+  photoLink.innerHTML = `<img src="${imageSrc}" alt="Photo" class="photo">`;
+  photoDiv.appendChild(photoLink);
+
+  const descriptionParagraph = document.createElement('p');
+  descriptionParagraph.innerHTML = `${title}<br><br>${description}`;
+  photoDiv.appendChild(descriptionParagraph);
+
+  return photoDiv;
+}
+
 function search() {
   const searchTerm = document.getElementById('searchTerm').value;
-  const searchResultElement = document.getElementById('searchResult');
 
-  // amusementParkPhotos에서 모든 title에서 검색어를 찾습니다.
-  const foundPhotos = amusementParkPhotos.filter(photoInfo => photoInfo.title.includes(searchTerm));
+  const allPhotos = amusementParkPhotos.concat(historyPhotos, animalPlantPhotos, museumPhotos, aquariumPhotos, parkPhotos, waterparkPhotos, beachPhotos, experiencePhotos, mountainPhotos);
 
-  if (foundPhotos.length > 0) {
-    // 검색된 모든 여행지의 description을 검색 결과에 추가합니다.
-    const searchResults = foundPhotos.map(photoInfo => photoInfo.description).join('<br>');
-    searchResultElement.innerHTML = searchResults;
+  let foundDescription = null;
+
+  for (const photoInfo of allPhotos) {
+    if (photoInfo.title.includes(searchTerm)) {
+      foundDescription = photoInfo.description;
+      break; // 일치하는 title을 찾았으면 루프 종료
+    }
+  }
+
+  const searchResult = document.getElementById('searchResult');
+  
+  if (foundDescription !== null) {
+    searchResult.textContent = foundDescription;
   } else {
-    searchResultElement.innerHTML = '일치하는 여행지를 찾을 수 없습니다.';
+    searchResult.textContent = '일치하는 결과가 없습니다.';
   }
 }
-*/
+
+function memo() {
+  location.href = "memo.html";
+}
+  
+function quiz() {
+  location.href = "quiz.html";
+}
+  
+function packing() {
+  location.href = "packing.html";
+}
+  
+function plan() {
+  location.href = "plan.html";
+}
+  
+function review() {
+  location.href = "review.html";
+}
+
+function community() {
+  location.href = "community.html";
+}
+
+function guide() {
+  location.href = "guide.html";
+}
+
+function join() {
+  location.href = "join.html";
+}
