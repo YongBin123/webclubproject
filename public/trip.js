@@ -12,7 +12,7 @@ const firstPhotos = [
   },
   {
     imageSrc: 'images/everland.jpg',
-    title: '경기도 (에버랜드)',
+    title: '경기 (에버랜드)',
     description: '경기 용인시 처인구 포곡읍 에버랜드로 199',
     website: 'https://www.everland.com/web/everland/main.html'
   },

@@ -195,7 +195,7 @@
     border: 2px solid #e4350d;
     text-align: center;
     overflow: hidden;
-    top: 110px; /* .header의 높이만큼 내려갔을 때 고정되도록 설정 */
+    top: 110px;
     z-index: 1;
 }
 
