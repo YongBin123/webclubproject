@@ -1,3 +1,16 @@
+window.addEventListener('scroll', function() {
+  var footer = document.querySelector('.footer');
+  var scrollPosition = window.scrollY;
+  var windowHeight = window.innerHeight;
+  var bodyHeight = document.body.offsetHeight;
+
+  if (scrollPosition + windowHeight >= bodyHeight) {
+      footer.style.position = 'static';
+  } else {
+      footer.style.position = 'fixed';
+  }
+});
+
 function toggleNav() {
   var navList = document.querySelector('.nav_list1');
   navList.classList.toggle('active');
