@@ -325,16 +325,15 @@
 
 .footer .consult {
     width: 1500px;
-    display: flex; /* Flexbox를 사용하여 요소를 가로로 나열합니다 */
-    justify-content: space-between; /* 양쪽 끝으로 정렬합니다 */
-    align-items: center; /* 수직 가운데 정렬합니다 */
-    margin-left: 10px;
+    display: flex; /* Flexbox를 사용하여 요소를 가로로 나열*/
+    align-items: center;
+    margin-left: 50px;
 }
 
 .footer .consult .contact {
-    display: flex; /* 내부 요소도 가로로 나열하기 위해 사용합니다 */
-    flex-direction: column; /* 세로로 나열합니다 */
-    align-items: flex-start; /* 좌측 정렬합니다 */
+    display: flex; /* 내부 요소도 가로로 나열 */
+    flex-direction: column; /* 세로로 나열 */
+    align-items: flex-start; /* 좌측 정렬 */
 }
 
 .footer .consult .consulting {
@@ -350,15 +349,26 @@
     font-size: 14px;
     font-weight: bolder;
     margin-top: 10px;
+    margin-left: 30px;
 }
 
-
-.footer .consult p {
+.footer .consult .message {
     color: rgb(76, 88, 114);
-    font-size: 27px;
+    font-size: 35px;
     font-weight: bolder;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 8px;
+    margin-left: 80px;
+    animation: slideInOut 2s infinite alternate; /* slideInOut 애니메이션을 2초 간격으로 무한 반복하면서 번갈아가며 적용 */
+}
+
+@keyframes slideInOut {
+    0% {
+        transform: translateX(0); /* 시작 위치 */
+    }
+    100% {
+        transform: translateX(20px); /* 움직이는 위치 (조정 가능) */
+    }
 }
 
 /*
