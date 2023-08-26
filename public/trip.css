@@ -315,33 +315,50 @@
 }
 
 .footer {
-    position: relative; /* 위치를 상대적으로 설정합니다 */
+    position: relative;
     width: 100%;
     height: 100px;
-    background-color: #ecaa1c; /* 원하는 배경색으로 변경하세요 */
+    background-color: #ecaa1c;
     padding: 10px;
     text-align: center;
 }
 
+.footer .consult {
+    width: 1500px;
+    display: flex; /* Flexbox를 사용하여 요소를 가로로 나열합니다 */
+    justify-content: space-between; /* 양쪽 끝으로 정렬합니다 */
+    align-items: center; /* 수직 가운데 정렬합니다 */
+    margin-left: 10px;
+}
+
+.footer .consult .contact {
+    display: flex; /* 내부 요소도 가로로 나열하기 위해 사용합니다 */
+    flex-direction: column; /* 세로로 나열합니다 */
+    align-items: flex-start; /* 좌측 정렬합니다 */
+}
+
 .footer .consult .consulting {
-    width: 400px;
     color: rgb(76, 88, 114);
     font-size: 27px;
     font-weight: bolder;
-    text-align: left;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 15px;
-    margin-left: 70px;
+    margin-top: 8px;
 }
 
 .footer .consult .time {
-    width: 300px;
-    position: absolute;
     color: #515050;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bolder;
-    text-align: center;
-    margin-left: 500px;
+    margin-top: 10px;
+}
+
+
+.footer .consult p {
+    color: rgb(76, 88, 114);
+    font-size: 27px;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 8px;
 }
 
 /*
