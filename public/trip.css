@@ -324,10 +324,10 @@
 }
 
 .footer .consult {
-    width: 1500px;
+    width: 100%;
     display: flex; /* Flexbox를 사용하여 요소를 가로로 나열*/
     align-items: center;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .footer .consult .contact {
@@ -354,7 +354,7 @@
 
 .footer .consult .message {
     color: rgb(76, 88, 114);
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bolder;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 8px;
@@ -364,10 +364,10 @@
 
 @keyframes slideInOut {
     0% {
-        transform: translateX(0); /* 시작 위치 */
+        transform: translateX(-30px); /* 시작 위치 */
     }
     100% {
-        transform: translateX(20px); /* 움직이는 위치 (조정 가능) */
+        transform: translateX(30px); /* 움직이는 위치 (조정 가능) */
     }
 }
 
