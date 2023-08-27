@@ -80,14 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
     postTitle.textContent = post.title;
     li.appendChild(postTitle);
 
-    const viewButton = document.createElement('button');
-    viewButton.classList.add('view-button');
-    viewButton.textContent = '내용 보기';
-    viewButton.addEventListener('click', function() {
-      showPostContent(post);
-    });
-    li.appendChild(viewButton);
-
     const postContent = document.createElement('p');
     postContent.classList.add('post-content');
     postContent.textContent = post.content;
