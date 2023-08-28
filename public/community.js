@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function loadPostsFromServer() {
-    fetch('/getPosts') // 서버의 '/getPosts' 경로로 GET 요청을 보냄
-      .then((response) => response.json()) // 서버로부터 받은 응답을 JSON 형식으로 변환
+    fetch('/getPosts')
+      .then((response) => response.json())
       .then((posts) => {
-        // 서버에서 받은 JSON 형식의 데이터를 순회하며 화면에 게시물을 표시
         posts.forEach((post) => {
           createPostElement(post);
         });
@@ -51,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error:', error);
       });
   }
-  
+
   function loadPostsFromLocalStorage() {
-    const savedPosts = JSON.parse(localStorage.getItem('posts') || '[]'); // 로컬 스토리지에서 'posts' 키에 저장된 데이터를 가져옴
-    savedPosts.forEach((post) => { // 서버에서 받은 JSON 형식의 데이터를 순회하며 화면에 게시물을 표시
+    const savedPosts = JSON.parse(localStorage.getItem('posts') || '[]');
+    savedPosts.forEach((post) => {
       createPostElement(post);
     });
   }
@@ -62,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function getFormattedDate() {
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // 2자리 숫자로 월을 표시하는데, 한 자리 숫자일 경우 앞에 0을 붙임
+    const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    return `${year}-${month}-${day} ${hours}:${minutes}`; // "년도-월-일 시간:분" 형식의 문자열로 표시
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
 
   function createPostElement(post) {
@@ -95,25 +94,65 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     li.appendChild(deleteButton);
 
-    li.addEventListener('click', function() {
-      showPostContent(post);
+    const commentSection = document.createElement('div');
+    commentSection.classList.add('comment-section');
+
+    const commentForm = document.createElement('form');
+    commentForm.classList.add('comment-form');
+    commentForm.innerHTML = `
+      <input type="text" class="comment-username" placeholder="작성자명">
+      <textarea class="comment-content" placeholder="댓글 내용"></textarea>
+      <button type="submit" class="comment-submit">댓글 작성</button>
+    `;
+
+    commentForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const commentUsernameInput = commentForm.querySelector('.comment-username');
+      const commentContentInput = commentForm.querySelector('.comment-content');
+
+      const commentUsername = commentUsernameInput.value;
+      const commentContent = commentContentInput.value;
+
+      if (commentUsername === '' || commentContent === '') {
+        return;
+      }
+
+      const comment = {
+        username: commentUsername,
+        content: commentContent,
+        date: getFormattedDate()
+      };
+
+      createCommentElement(comment, commentSection);
+      commentUsernameInput.value = '';
+      commentContentInput.value = '';
     });
+
+    commentSection.appendChild(commentForm);
+    li.appendChild(commentSection);
 
     postList.appendChild(li);
   }
 
-  function showPostContent(post) {
-    const postContentContainer = document.getElementById('postContentContainer');
-    const postContentTitle = document.getElementById('postContentTitle');
-    const postContentText = document.getElementById('postContentText');
-  
-    postContentTitle.textContent = post.title;
-    postContentText.textContent = post.content;
-  
-    // 글 목록을 숨기고 글 내용을 보여줌
-    postList.style.display = 'none';
-    postContentContainer.style.display = 'block';
-  }  
+  function createCommentElement(comment, commentSection) {
+    const commentElement = document.createElement('div');
+    commentElement.classList.add('comment');
+
+    const commentInfo = document.createElement('span');
+    commentInfo.classList.add('comment-info');
+    commentInfo.innerHTML = `<strong>${comment.username}</strong> - ${comment.date}`;
+    commentElement.appendChild(commentInfo);
+
+    const commentContent = document.createElement('p');
+    commentContent.classList.add('comment-content');
+    commentContent.textContent = comment.content;
+    commentElement.appendChild(commentContent);
+
+    commentSection.appendChild(commentElement);
+
+    postList.appendChild(li);
+  }
 
   function savePostToServer(post) {
     // 서버로 글 저장 요청 보내기
