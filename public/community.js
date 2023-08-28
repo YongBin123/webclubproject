@@ -95,8 +95,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     li.appendChild(deleteButton);
 
+    li.addEventListener('click', function() {
+      showPostContent(post);
+    });
+
     postList.appendChild(li);
   }
+
+  function showPostContent(post) {
+    const postContentContainer = document.getElementById('postContentContainer');
+    const postContentTitle = document.getElementById('postContentTitle');
+    const postContentText = document.getElementById('postContentText');
+  
+    postContentTitle.textContent = post.title;
+    postContentText.textContent = post.content;
+  
+    // 글 목록을 숨기고 글 내용을 보여줌
+    postList.style.display = 'none';
+    postContentContainer.style.display = 'block';
+  }  
 
   function savePostToServer(post) {
     // 서버로 글 저장 요청 보내기

@@ -907,7 +907,7 @@ const mountainPhotos = [
 
 function displayFirstInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of firstPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -917,7 +917,7 @@ function displayFirstInfo() {
 
 function displayAmusementParkInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of amusementParkPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -927,7 +927,7 @@ function displayAmusementParkInfo() {
 
 function displayHistoryInfo() {
   const photoContainer = document.querySelector('.photo-container');
-  photoContainer.innerHTML = ''; // 기존 내용을 초기화
+  photoContainer.innerHTML = '';
 
   for (const photoInfo of historyPhotos) {
     const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -937,7 +937,7 @@ function displayHistoryInfo() {
 
 function displayAnimalPlantInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of animalPlantPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -947,7 +947,7 @@ function displayAnimalPlantInfo() {
 
 function displayMuseumInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of museumPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -957,7 +957,7 @@ function displayMuseumInfo() {
 
 function displayParkInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of parkPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -1052,7 +1052,7 @@ function displayAquariumInfo() {
     ];
 
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of aquariumPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -1062,7 +1062,7 @@ function displayAquariumInfo() {
 
 function displayBeachInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of beachPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -1072,7 +1072,7 @@ function displayBeachInfo() {
 
 function displayExperienceInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of experiencePhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -1082,7 +1082,7 @@ function displayExperienceInfo() {
 
 function displayMountainInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = ''; 
 
     for (const photoInfo of mountainPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
