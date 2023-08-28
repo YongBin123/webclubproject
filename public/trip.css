@@ -365,15 +365,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 1px;
     margin-left: 50px;
-    animation: slideInOut 3s infinite alternate; /* slideInOut 애니메이션을 2초 간격으로 무한 반복하면서 번갈아가며 적용 */
+    animation: slideInOut 3s infinite alternate; 
 }
 
 @keyframes slideInOut {
     0% {
-        transform: translateX(-20px); /* 시작 위치 */
+        transform: translateX(-20px);
     }
     100% {
-        transform: translateX(20px); /* 움직이는 위치 (조정 가능) */
+        transform: translateX(20px);
     }
 }
 
@@ -424,16 +424,6 @@
     color: #1fdfdf;
     transform: scale(1.1);
 }
-*/
-
-/*
-                    <li class="nav-item"><a href="#" onclick="memo()">여행메모</a></li>
-                    <li class="nav-item"><a href="#" onclick="packing()">여행패킹리스트</a></li>
-                    <li class="nav-item"><a href="#" onclick="plan()">여행플래너</a></li>
-                    <li class="nav-item"><a href="#" onclick="review()">여행지리뷰</a></li>
-                    <li class="nav-item"><a href="#" onclick="community()">여행지커뮤니티</a></li>
-                    <li class="nav-item"><a href="#" onclick="quiz()">여행퀴즈이벤트</a></li>
-                    <li class="nav-item"><a href="#" onclick="guide()">사용가이드</a></li>
 */
 
 /*
