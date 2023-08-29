@@ -107,32 +107,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     commentForm.addEventListener('submit', function(event) {
       event.preventDefault();
-
+  
       const commentUsernameInput = commentForm.querySelector('.comment-username');
       const commentContentInput = commentForm.querySelector('.comment-content');
-
+  
       const commentUsername = commentUsernameInput.value;
       const commentContent = commentContentInput.value;
-
+  
       if (commentUsername === '' || commentContent === '') {
         return;
       }
-
+  
       const comment = {
         username: commentUsername,
         content: commentContent,
         date: getFormattedDate()
       };
-
+  
       createCommentElement(comment, commentSection);
-      commentUsernameInput.value = '';
-      commentContentInput.value = '';
+      saveCommentToServer(comment);
+      saveCommentToLocalStorage(comment);
+      resetForm();
     });
-
+  
     commentSection.appendChild(commentForm);
     li.appendChild(commentSection);
-
+  
     postList.appendChild(li);
+  }
+
+  function saveCommentToLocalStorage(comment) {
+    const savedComments = JSON.parse(localStorage.getItem('comments') || '[]');
+    savedComments.push(comment);
+    localStorage.setItem('comments', JSON.stringify(savedComments));
+  }
+
+  function saveCommentToServer(comment) {
+    // 서버로 댓글 저장 요청 보내기
+    fetch('/saveComment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(comment),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   function createCommentElement(comment, commentSection) {

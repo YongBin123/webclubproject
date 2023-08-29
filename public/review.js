@@ -20,6 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+reviewList.addEventListener('click', function(event) {
+  const target = event.target;
+  
+  if (target.classList.contains('like-btn')) {
+    const parentLi = target.closest('li');
+    const reviewId = parentLi.getAttribute('data-review-id');
+    
+    if (reviewId) {
+      const savedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      const updatedReviews = savedReviews.map(review => {
+        if (review.id === parseInt(reviewId)) {
+          review.liked = !review.liked;
+          return review;
+        }
+        return review;
+      });
+      
+      localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+      updateLikeStatus(target, reviewId);
+    }
+  }
+});
+
   reviewForm.addEventListener('submit', function (event) {
     event.preventDefault();
 

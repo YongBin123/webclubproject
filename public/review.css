@@ -182,3 +182,13 @@ button:hover {
     font-weight: bold;
     margin-left: 10px;
 }
+
+.like-btn {
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.like-btn.liked {
+  color: #e74c3c; /* 좋아요가 눌려진 경우 색상 변경 */
+}
