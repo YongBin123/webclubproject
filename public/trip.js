@@ -1,16 +1,3 @@
-window.addEventListener('scroll', function() {
-  var footer = document.querySelector('.footer');
-  var scrollPosition = window.scrollY;
-  var windowHeight = window.innerHeight;
-  var bodyHeight = document.body.offsetHeight;
-
-  if (scrollPosition + windowHeight >= bodyHeight) {
-      footer.style.position = 'static';
-  } else {
-      footer.style.position = 'fixed';
-  }
-});
-
 function toggleNav() {
   var navList = document.querySelector('.nav_list1');
   navList.classList.toggle('active');
@@ -586,7 +573,7 @@ const parkPhotos = [
     }   
     ];
 
-  const waterparkPhotos = [
+const waterparkPhotos = [
     {
       imageSrc: 'images/caribeean.jpeg',
       title: '캐리비안베이',
@@ -909,9 +896,10 @@ function displayFirstInfo() {
     const photoContainer = document.querySelector('.photo-container');
     photoContainer.innerHTML = '';
 
-    for (const photoInfo of firstPhotos) {
+    for (const photoInfo of firstPhotos) { // firstPhotos 배열에 있는 정보들을 반복하여 화면에 추가
+        // createPhotoDiv 함수를 호출하여 사진 정보를 담은 div 요소 생성
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
-        photoContainer.appendChild(photoDiv);
+        photoContainer.appendChild(photoDiv); // 생성한 div 요소를 .photo-container에 추가
     }
 }
 
@@ -967,7 +955,7 @@ function displayParkInfo() {
 
 function displayWaterParkInfo() {
     const photoContainer = document.querySelector('.photo-container');
-    photoContainer.innerHTML = ''; // 기존 내용을 초기화
+    photoContainer.innerHTML = '';
 
     for (const photoInfo of waterparkPhotos) {
         const photoDiv = createPhotoDiv(photoInfo.imageSrc, photoInfo.title, photoInfo.description, photoInfo.website);
@@ -1094,13 +1082,13 @@ function createPhotoDiv(imageSrc, title, description, website) {
   const photoDiv = document.createElement('div');
   photoDiv.classList.add('photo');
 
-  const photoLink = document.createElement('a');
+  const photoLink = document.createElement('a'); // 사진 링크를 담은 a 요소 생성
   photoLink.href = website; // 해당 사진의 홈페이지로 링크 설정
-  photoLink.innerHTML = `<img src="${imageSrc}" alt="Photo" class="photo">`;
+  photoLink.innerHTML = `<img src="${imageSrc}" alt="Photo" class="photo">`; // 템플릿 리터럴 사용, 이미지 태그 생성 및 속성 설정, 변수 imageSrc의 값을 문자열로 삽입하여 이미지의 소스 경로가 동적으로 설정됨
   photoDiv.appendChild(photoLink);
 
-  const descriptionParagraph = document.createElement('p');
-  descriptionParagraph.innerHTML = `${title}<br><br>${description}`;
+  const descriptionParagraph = document.createElement('p'); // 설명을 담은 p 요소 생성
+  descriptionParagraph.innerHTML = `${title}<br><br>${description}`; // 제목과 설명을 추가
   photoDiv.appendChild(descriptionParagraph);
 
   return photoDiv;
@@ -1113,7 +1101,7 @@ function search() {
 
   let foundDescription = null;
 
-  for (const photoInfo of allPhotos) {
+  for (const photoInfo of allPhotos) { // 모든 사진 정보를 반복하며 검색어와 일치하는 title을 찾기
     if (photoInfo.title.includes(searchTerm)) {
       foundDescription = photoInfo.description;
       break; // 일치하는 title을 찾았으면 루프 종료
@@ -1134,7 +1122,6 @@ function search() {
     const searchResult = document.getElementById('searchResult');
     searchResult.textContent = '검색한 여행지의 주소가 이곳에 뜹니다.';
 });
-
 }
 
 function memo() {
