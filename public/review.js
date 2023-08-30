@@ -56,7 +56,7 @@ reviewList.addEventListener('click', function(event) {
     }
 
     const formData = {
-      id: Date.now(), // 간단히 현재 시간을 사용하여 고유한 ID를 생성합니다.
+      id: Date.now(), // 간단히 현재 시간을 사용하여 고유한 ID를 생성
       place: place,
       review: review,
       rating: selectedRating,

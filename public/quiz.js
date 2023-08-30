@@ -72,29 +72,6 @@ function loadQuestion() {
     answerInput.focus();
 }
 
-/*
-function checkAnswer() {
-    const userAnswer = document.getElementById("answer").value;
-    const correctAnswer = questions[currentQuestion].answer;
-
-    const feedback = document.getElementById("feedback");
-    if (userAnswer === correctAnswer) {
-        feedback.textContent = "정답입니다!";
-        feedback.style.color = "#4CAF50";
-        score++;
-        loadNextQuestion(); // 정답이 맞으면 다음 문제로 바로 넘어감
-    } else {
-        feedback.textContent = "오답입니다. 정답은 " + correctAnswer + "입니다.";
-        feedback.style.color = "#FF0000";
-    }
-
-    if (currentQuestion === questions.length - 1) {
-        const nextButton = document.querySelector(".next");
-        nextButton.textContent = "결과 보기";
-    }
-}
-*/
-
 function checkAnswer() {
     const userAnswer = document.getElementById("answer").value; // 사용자가 입력한 정답
     const correctAnswer = questions[currentQuestion].answer; // 현재 질문의 정답
