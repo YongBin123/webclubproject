@@ -129,3 +129,16 @@ p {
     color: #d63c33;
     transform: scale(1.1);
 }
+
+.memo-item .edit-btn {
+    color: #33bb09;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.memo-item .edit-btn:hover {
+    color: #5db60f;
+    transform: scale(1.1);
+}
