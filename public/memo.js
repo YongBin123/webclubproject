@@ -14,27 +14,33 @@ window.addEventListener('DOMContentLoaded', () => {
 function createMemoElement(memo) {
   var memoDiv = document.createElement('div');
   memoDiv.classList.add('memo-item');
-  memoDiv.id = memo.id; // 메모의 id를 요소의 id로 설정
+  memoDiv.id = memo.id;
 
   var memoContent = document.createElement('p');
   memoContent.textContent = memo.content;
 
-  var deleteButton = document.createElement('span'); // 버튼을 span으로 변경
-  deleteButton.classList.add('delete-btn'); // delete-btn 클래스 추가
+  var editButton = document.createElement('button'); // 수정 버튼 추가
+  editButton.textContent = '수정';
+  editButton.onclick = function () {
+    editMemo(memo.id); // 수정 버튼 클릭 시 메모 편집 기능 실행
+  };
+
+  var deleteButton = document.createElement('span');
+  deleteButton.classList.add('delete-btn');
   deleteButton.textContent = '삭제';
   deleteButton.onclick = function () {
-    deleteMemoOnServer(memo.id); // 서버에서 메모 삭제 요청
+    deleteMemoOnServer(memo.id);
   };
 
   var buttonGroup = document.createElement('div');
   buttonGroup.classList.add('button-group');
   buttonGroup.appendChild(memoContent);
+  buttonGroup.appendChild(editButton); // 수정 버튼 추가
   buttonGroup.appendChild(deleteButton);
 
   memoDiv.appendChild(buttonGroup);
 
   var savedMemos = document.getElementById('savedMemos');
-
   savedMemos.appendChild(memoDiv);
 }
 
@@ -45,6 +51,61 @@ function loadMemosFromLocalStorage() {
     // 가져온 메모들을 순회하면서 각각의 메모를 화면에 표시하는 함수
     createMemoElement(memo);
   });
+}
+
+function editMemo(memoId) {
+  var memoDiv = document.getElementById(memoId);
+  var memoContent = memoDiv.querySelector('p');
+  var memoText = memoContent.textContent;
+
+  document.getElementById('memoText').value = memoText; // 수정할 메모 내용을 텍스트 에어리어에 표시
+  document.getElementById('save').style.display = 'none'; // 저장 버튼 감추기
+  document.getElementById('update').style.display = 'inline'; // 수정 버튼 표시
+
+  var savedMemos = document.querySelectorAll('.memo-item');
+  savedMemos.forEach((memo) => {
+    memo.classList.remove('selected'); // 모든 메모 아이템의 선택 클래스 제거
+  });
+  memoDiv.classList.add('selected'); // 선택된 메모 아이템에 선택 클래스 추가
+}
+
+function updateMemo() {
+  var memoText = document.getElementById('memoText').value;
+  var selectedMemoId = document.querySelector('.memo-item.selected').id;
+
+  if (memoText !== '' && selectedMemoId) {
+    var updatedMemo = { id: selectedMemoId, content: memoText };
+
+    fetch(`/updateMemo/${selectedMemoId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedMemo),
+    })
+      .then((response) => response.text())
+      .then(() => {
+        var memoDiv = document.getElementById(selectedMemoId);
+        var memoContent = memoDiv.querySelector('p');
+        memoContent.textContent = memoText;
+
+        updateMemoInLocalStorage(updatedMemo);
+
+        document.getElementById('memoText').value = '';
+        document.getElementById('save').style.display = 'inline'; // 수정 완료 후 저장 버튼 표시
+        document.getElementById('update').style.display = 'none'; // 수정 완료 후 수정 버튼 감추기
+        memoDiv.classList.remove('selected'); // 선택 클래스 제거
+      });
+  }
+}
+
+function updateMemoInLocalStorage(updatedMemo) {
+  var memoId = updatedMemo.id;
+  const savedMemos = JSON.parse(localStorage.getItem('memos') || '[]');
+  const updatedMemos = savedMemos.map((memo) =>
+    memo.id === memoId ? updatedMemo : memo
+  );
+  localStorage.setItem('memos', JSON.stringify(updatedMemos));
 }
 
 function deleteMemoOnServer(memoId) {
