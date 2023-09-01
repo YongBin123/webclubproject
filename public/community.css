@@ -139,6 +139,18 @@ button:hover {
     transform: scale(1.1);
 }
 
+.edit-button {
+    position: absolute;
+    top: 75px;
+    right: 80px;
+    background-color: #33bb09;
+}
+
+.edit-button:hover {
+    background-color: #5db60f;
+    transform: scale(1.1);
+}
+
 .comment-content {
     height: 70px;;
 }

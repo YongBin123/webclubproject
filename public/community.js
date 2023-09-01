@@ -74,16 +74,24 @@ document.addEventListener('DOMContentLoaded', function() {
     postInfo.classList.add('post-info');
     postInfo.innerHTML = `<strong>${post.username}</strong> - ${post.date}`;
     li.appendChild(postInfo);
-
+  
     const postTitle = document.createElement('h3');
     postTitle.textContent = post.title;
     li.appendChild(postTitle);
-
+  
     const postContent = document.createElement('p');
     postContent.classList.add('post-content');
     postContent.textContent = post.content;
     li.appendChild(postContent);
-
+  
+    const editButton = document.createElement('button');
+    editButton.classList.add('edit-button');
+    editButton.textContent = '수정';
+    editButton.addEventListener('click', function() {
+      editPost(post); // 수정 버튼 클릭 시 해당 글을 수정하는 함수 호출
+    });
+    li.appendChild(editButton);
+  
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete-button');
     deleteButton.textContent = '삭제';
@@ -93,10 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
       li.remove();
     });
     li.appendChild(deleteButton);
-
+  
     const commentSection = document.createElement('div');
     commentSection.classList.add('comment-section');
-
+  
     const commentForm = document.createElement('form');
     commentForm.classList.add('comment-form');
     commentForm.innerHTML = `
@@ -104,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <textarea class="comment-content" placeholder="댓글 내용"></textarea>
       <button type="submit" class="comment-submit">댓글 작성</button>
     `;
-
+  
     commentForm.addEventListener('submit', function(event) {
       event.preventDefault();
   
@@ -136,6 +144,21 @@ document.addEventListener('DOMContentLoaded', function() {
     postList.appendChild(li);
   }
 
+  function editPost(post) {
+    const postForm = document.getElementById('postForm');
+    const usernameInput = document.getElementById('username');
+    const titleInput = document.getElementById('title');
+    const contentTextarea = document.getElementById('content');
+    const submitButton = document.getElementById('submit');
+  
+    usernameInput.value = post.username;
+    titleInput.value = post.title;
+    contentTextarea.value = post.content;
+  
+    // 수정 버튼의 동작 변경: 글 수정
+    submitButton.textContent = '글 수정';
+  }
+  
   function saveCommentToLocalStorage(comment) {
     const savedComments = JSON.parse(localStorage.getItem('comments') || '[]');
     savedComments.push(comment);

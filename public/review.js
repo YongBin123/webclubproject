@@ -174,13 +174,9 @@ function editReview(formData) {
   // 폼 제출 버튼을 수정 동작을 처리하도록 업데이트
   const submitBtn = document.getElementById('save');
   submitBtn.textContent = '리뷰 수정';
-  submitBtn.removeEventListener('click', saveReview);
-  submitBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-    updateReview(formData.id);
-  });
 }
 
+/*
 function updateReview(reviewId) {
   const placeInput = document.getElementById('place');
   const reviewInput = document.getElementById('review');
@@ -230,6 +226,7 @@ function updateReview(reviewId) {
   submitBtn.removeEventListener('click', updateReview);
   submitBtn.addEventListener('click', saveReview);
 }
+*/
 
 function saveReviewToServer(formData) {
   fetch('/saveReview', {
