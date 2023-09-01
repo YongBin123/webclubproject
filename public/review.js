@@ -100,6 +100,7 @@ function createReviewElement(formData) {
   reviewInfo.textContent = formData.place + ': ' + formData.review;
   li.appendChild(reviewInfo);
 
+  
   const ratingContainer = document.createElement('div');
   ratingContainer.classList.add('star-rating');
   for (let i = 1; i <= 5; i++) {
@@ -115,11 +116,22 @@ function createReviewElement(formData) {
   }
   li.appendChild(ratingContainer);
 
+  reviewList.appendChild(li);
+
+  const editDeleteContainer = document.createElement('div'); // 수정 버튼과 삭제 버튼을 감싸는 컨테이너
+  editDeleteContainer.classList.add('edit-delete-container');
+
+  const editBtn = document.createElement('span');
+  editBtn.classList.add('edit-btn');
+  editBtn.textContent = '수정';
+  editBtn.addEventListener('click', function() {
+    editReview(formData);
+  });
+  editDeleteContainer.appendChild(editBtn);
+
   const deleteBtn = document.createElement('span');
   deleteBtn.classList.add('delete-btn');
   deleteBtn.textContent = '삭제';
-  li.appendChild(deleteBtn);
-
   deleteBtn.addEventListener('click', function () {
     const reviewId = formData.id;
 
@@ -140,8 +152,83 @@ function createReviewElement(formData) {
         console.error('Error:', error);
       });
   });
+  editDeleteContainer.appendChild(deleteBtn);
 
-  reviewList.appendChild(li);
+  li.appendChild(editDeleteContainer);
+}
+
+function editReview(formData) {
+  const placeInput = document.getElementById('place');
+  const reviewInput = document.getElementById('review');
+  const ratingContainer = document.getElementById('rating');
+
+  placeInput.value = formData.place;
+  reviewInput.value = formData.review;
+
+  // 선택된 별점 설정
+  const stars = ratingContainer.querySelectorAll('.star');
+  stars.forEach((star, index) => {
+    star.classList.toggle('active', index < formData.rating);
+  });
+
+  // 폼 제출 버튼을 수정 동작을 처리하도록 업데이트
+  const submitBtn = document.getElementById('save');
+  submitBtn.textContent = '리뷰 수정';
+  submitBtn.removeEventListener('click', saveReview);
+  submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    updateReview(formData.id);
+  });
+}
+
+function updateReview(reviewId) {
+  const placeInput = document.getElementById('place');
+  const reviewInput = document.getElementById('review');
+  
+  const updatedPlace = placeInput.value;
+  const updatedReview = reviewInput.value;
+  
+  if (updatedPlace === '' || updatedReview === '' || selectedRating === 0) {
+    return;
+  }
+
+  const updatedFormData = {
+    id: reviewId,
+    place: updatedPlace,
+    review: updatedReview,
+    rating: selectedRating,
+  };
+
+  // 목록에서 리뷰 요소를 찾아서 내용을 업데이트
+  const reviewElements = document.querySelectorAll('.review-list li');
+  reviewElements.forEach(element => {
+    const elementId = element.getAttribute('data-review-id');
+    if (elementId === reviewId.toString()) {
+      element.querySelector('span').textContent = updatedPlace + ': ' + updatedReview;
+      const starsContainer = element.querySelector('.star-rating');
+      const stars = starsContainer.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        star.classList.toggle('active', index < selectedRating);
+      });
+    }
+  });
+
+  // 로컬 스토리지에서 리뷰 업데이트
+  const savedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+  const updatedReviews = savedReviews.map(review => {
+    if (review.id === reviewId) {
+      return updatedFormData;
+    }
+    return review;
+  });
+  localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+
+  // 수정 후 폼 및 버튼 재설정
+  resetForm();
+  const submitBtn = document.getElementById('save');
+  submitBtn.textContent = '리뷰 저장';
+  submitBtn.removeEventListener('click', updateReview);
+  submitBtn.addEventListener('click', saveReview);
 }
 
 function saveReviewToServer(formData) {
