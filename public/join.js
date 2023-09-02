@@ -1,4 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.querySelector('form').addEventListener('submit', (e) => {
+  e.preventDefault(); // 기본 제출 동작 방지
+
+  const formData = new FormData(e.target);
+
+  fetch('/register', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data); // 회원가입 완료 또는 오류 메시지를 표시
+      if (data === '회원가입이 완료되었습니다.') {
+        // 가입 성공 시 다른 동작 수행
+        // 예: 회원가입 화면을 초기화하거나 로그인 페이지로 리디렉션
+      }
+    });
+});
+
+function goBack() {
+    window.open("trip.html");
+    window.close();
+}
+
+/*document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
   
     form.addEventListener('submit', (event) => {
@@ -36,8 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch((error) => console.error('Error:', error));
     });
   });
-  
-function goBack() {
-    window.open("trip.html");
-    window.close();
-}
+  */
