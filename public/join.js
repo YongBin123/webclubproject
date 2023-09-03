@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 비밀번호 필드의 값을 지우고, 숨깁니다.
+    // 비밀번호 필드의 값을 지우고, 숨김.
     document.getElementById('password').value = '';
     document.getElementById('confirm-password').value = '';
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('phone', phone);
     formData.append('email', email);
     formData.append('username', username);
-    formData.append('password', password); // 이제 비밀번호는 안전하게 서버로 전송됩니다.
+    formData.append('password', password);
 
     fetch('/register', {
       method: 'POST',
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = JSON.parse(text);
         if (data.success) {
           alert('회원가입이 성공적으로 완료되었습니다.');
-          // 원하는 동작 (예: 로그인 페이지로 이동)
         } else {
           alert('회원가입에 실패했습니다.');
         }
