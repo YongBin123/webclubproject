@@ -1,63 +1,63 @@
-document.querySelector('form').addEventListener('submit', (e) => {
-  e.preventDefault(); // 기본 제출 동작 방지
+document.addEventListener('DOMContentLoaded', () => {
+  const registrationForm = document.querySelector('form');
+  
+  registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const formData = new FormData(e.target);
+    const fullname = document.getElementById('fullname').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
 
-  fetch('/register', {
-    method: 'POST',
-    body: formData,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      alert(data); // 회원가입 완료 또는 오류 메시지를 표시
-      if (data === '회원가입이 완료되었습니다.') {
-        // 가입 성공 시 다른 동작 수행
-        // 예: 회원가입 화면을 초기화하거나 로그인 페이지로 리디렉션
+    if (password !== confirmPassword) {
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+      return;
+    }
+
+    // 비밀번호 필드의 값을 지우고, 숨깁니다.
+    document.getElementById('password').value = '';
+    document.getElementById('confirm-password').value = '';
+
+    // 서버로 회원가입 요청 보내기
+    const formData = new FormData();
+    formData.append('fullname', fullname);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('username', username);
+    formData.append('password', password); // 이제 비밀번호는 안전하게 서버로 전송됩니다.
+
+    fetch('/register', {
+      method: 'POST',
+      body: formData,
+    })
+    .then((response) => {
+      if (response.status !== 200) {
+        throw new Error(`서버 응답이 비정상적입니다. 상태 코드: ${response.status}`);
       }
+      return response.text();
+    })
+    .then((text) => {
+      try {
+        const data = JSON.parse(text);
+        if (data.success) {
+          alert('회원가입이 성공적으로 완료되었습니다.');
+          // 원하는 동작 (예: 로그인 페이지로 이동)
+        } else {
+          alert('회원가입에 실패했습니다.');
+        }
+      } catch (error) {
+        console.error('서버 응답 JSON 파싱 오류:', error);
+      }
+    })
+    .catch((error) => {
+      console.error('회원가입 오류:', error);
     });
+  });
 });
 
 function goBack() {
     window.open("trip.html");
     window.close();
 }
-
-/*document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
-  
-    form.addEventListener('submit', (event) => {
-      event.preventDefault(); // 기본 제출 동작을 막음.
-  
-      const username = document.getElementById('username').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const fullname = document.getElementById('fullname').value;
-      const phone = document.getElementById('phone').value;
-  
-      const userData = {
-        username,
-        email,
-        password,
-        fullname,
-        phone,
-      };
-  
-      // 서버로 데이터를 전송하는 부분
-      fetch('/join', {
-        method: 'POST', // 서버에서 POST 메서드를 지원하므로 POST로 변경
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((response) => response.text())
-        .then((message) => {
-          // 알림 창으로 성공 메시지를 표시
-          alert(message);
-  
-          form.reset();
-        })
-        .catch((error) => console.error('Error:', error));
-    });
-  });
-  */
