@@ -1095,34 +1095,70 @@ function createPhotoDiv(imageSrc, title, description, website) {
 }
 
 function search() {
-  const searchTerm = document.getElementById('searchTerm').value;
+  // 검색어 가져오기
+  var searchTerm = document.getElementById('searchTerm').value.toLowerCase();
+  
+  // 검색 결과를 저장할 배열
+  var searchResults = [];
 
   const allPhotos = amusementParkPhotos.concat(historyPhotos, animalPlantPhotos, museumPhotos, aquariumPhotos, parkPhotos, waterparkPhotos, beachPhotos, experiencePhotos, mountainPhotos);
-
-  let foundDescription = null;
-
-  for (const photoInfo of allPhotos) { // 모든 사진 정보를 반복하며 검색어와 일치하는 title을 찾기
-    if (photoInfo.title.includes(searchTerm)) {
-      foundDescription = photoInfo.description;
-      break; // 일치하는 title을 찾았으면 루프 종료
+  // 검색어와 일치하는 여행지를 찾아서 결과 배열에 추가
+  for (var i = 0; i < allPhotos.length; i++) {
+    var title = allPhotos[i].title.toLowerCase();
+    if (title.includes(searchTerm)) {
+      searchResults.push(allPhotos[i]);
     }
   }
 
-  const searchResult = document.getElementById('searchResult');
-  
-  if (foundDescription !== null) {
-    searchResult.textContent = foundDescription;
-  } else {
-    searchResult.textContent = '일치하는 결과가 없습니다.';
-  }
-
-  const searchTermElement = document.getElementById('searchTerm');
-  searchTermElement.addEventListener('click', function() {
-    searchTermElement.value = '';
-    const searchResult = document.getElementById('searchResult');
-    searchResult.textContent = '검색한 여행지의 주소가 이곳에 뜹니다.';
-});
+  // 결과를 화면에 표시
+  displaySearchResults(searchResults);
 }
+
+function displaySearchResults(results) {
+  var searchResultsDiv = document.getElementById('searchResults');
+  searchResultsDiv.innerHTML = ''; // 이전 검색 결과를 지웁니다.
+
+  if (results.length === 0) {
+    searchResultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+  } else {
+    // 검색 결과를 화면에 표시
+    for (var i = 0; i < results.length; i++) {
+      var result = results[i];
+      var resultDiv = document.createElement('div');
+      resultDiv.classList.add('search-result-item');
+
+      // 이미지 추가
+      var img = document.createElement('img');
+      img.src = result.imageSrc;
+      resultDiv.appendChild(img);
+
+      // 제목 추가
+      var title = document.createElement('h2');
+      title.textContent = result.title;
+      resultDiv.appendChild(title);
+
+      // 주소 추가
+      var description = document.createElement('p');
+      description.textContent = result.description;
+      resultDiv.appendChild(description);
+
+      // 웹사이트 링크 추가
+      var websiteLink = document.createElement('a');
+      websiteLink.href = result.website;
+      websiteLink.textContent = '자세히 보기';
+      resultDiv.appendChild(websiteLink);
+
+      searchResultsDiv.appendChild(resultDiv);
+    }
+  }
+}
+
+// 검색 칸에 마우스 클릭 이벤트를 추가하여 searchResults를 지웁니다.
+var searchTermInput = document.getElementById('searchTerm');
+searchTermInput.addEventListener('click', function() {
+  var searchResultsDiv = document.getElementById('searchResults');
+  searchResultsDiv.innerHTML = '';
+});
 
 function memo() {
   location.href = "memo.html";
