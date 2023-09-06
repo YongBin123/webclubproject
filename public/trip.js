@@ -1112,6 +1112,14 @@ function search() {
 
   // 결과를 화면에 표시
   displaySearchResults(searchResults);
+
+  // 검색 결과가 있을 때만 .search-results를 표시
+  var searchResultsDiv = document.getElementById('searchResults');
+  if (searchResults.length > 0) {
+    searchResultsDiv.style.display = 'flex';
+  } else {
+    searchResultsDiv.style.display = 'none'; // 검색 결과가 없을 때 숨김
+  }
 }
 
 function displaySearchResults(results) {
@@ -1119,8 +1127,10 @@ function displaySearchResults(results) {
   searchResultsDiv.innerHTML = ''; // 이전 검색 결과를 지웁니다.
 
   if (results.length === 0) {
+    searchResultsDiv.style.display = 'none'; // 검색 결과가 없을 때 숨김
     searchResultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
   } else {
+    searchResultsDiv.style.display = 'flex'; // 검색 결과가 있을 때 표시
     // 검색 결과를 화면에 표시
     for (var i = 0; i < results.length; i++) {
       var result = results[i];
