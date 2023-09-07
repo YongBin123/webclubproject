@@ -1120,6 +1120,12 @@ function search() {
   } else {
     searchResultsDiv.style.display = 'none'; // 검색 결과가 없을 때 숨김
   }
+
+  // 닫기 버튼에 이벤트 리스너 추가
+  var closeButton = document.getElementById('closeButton');
+  closeButton.addEventListener('click', function() {
+    searchResultsDiv.style.display = 'none';
+  });
 }
 
 function displaySearchResults(results) {
@@ -1157,6 +1163,12 @@ function displaySearchResults(results) {
       websiteLink.href = result.website;
       websiteLink.textContent = '자세히 보기';
       resultDiv.appendChild(websiteLink);
+
+      // 닫기 버튼 추가
+      var closeButton = document.createElement('button');
+      closeButton.id = 'closeButton';
+      closeButton.textContent = '닫기';
+      resultDiv.appendChild(closeButton);
 
       searchResultsDiv.appendChild(resultDiv);
     }
