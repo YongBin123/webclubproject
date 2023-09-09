@@ -168,7 +168,7 @@
 }
 
 #loginButton {
-    width: 60px;
+    width: 65px;
     height: 30px;
     padding: 5px;
     background-color: #f5a206;
@@ -187,6 +187,26 @@
     transform: scale(1.1);
 }
 
+#logoutButton {
+    width: 55px;
+    height: 25px;
+    padding: 5px;
+    background-color: #f5a206;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bolder;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+#logoutButton:hover {
+    background-color: #d69004;
+    transform: scale(1.1);
+}
+
 #signupText {
     font-size: 12px;
     margin-top: 5px;
@@ -196,6 +216,19 @@
     position: absolute; /* 절대 위치 지정 */
     bottom: 0; /* 아래에서부터 0px 위치에 배치 */
     right: 0; /* 오른쪽에서부터 0px 위치에 배치 */
+}
+
+#loginText {
+    font-size: 12px;
+    font-weight: 800;
+    color: #f57003;
+    margin-top: 10px;
+    margin-right: 40px;
+    margin-bottom: 22px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .hamburger {
