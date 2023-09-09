@@ -1,58 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const registrationForm = document.querySelector('form');
-  
-  registrationForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-    const fullname = document.getElementById('fullname').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
+  const fullname = document.getElementById('fullname').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-    if (password !== confirmPassword) {
-      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
-      return;
+  const userData = {
+    fullname: fullname,
+    phone: phone,
+    email: email,
+    username: username,
+    password: password
+  };
+
+  // JSON.stringify를 사용하여 body를 JSON 문자열로 변환
+  fetch('http://localhost:5500/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(errorData => {
+        throw new Error(errorData.message); // errorData.message를 사용하여 오류 메시지를 가져옴
+      });
     }
-
-    // 비밀번호 필드의 값을 지우고, 숨김.
-    document.getElementById('password').value = '';
-    document.getElementById('confirm-password').value = '';
-
-    // 서버로 회원가입 요청 보내기
-    const formData = new FormData();
-    formData.append('fullname', fullname);
-    formData.append('phone', phone);
-    formData.append('email', email);
-    formData.append('username', username);
-    formData.append('password', password);
-
-    fetch('/register', {
-      method: 'POST',
-      body: formData,
-    })
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error(`서버 응답이 비정상적입니다. 상태 코드: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then((text) => {
-      try {
-        const data = JSON.parse(text);
-        if (data.success) {
-          alert('회원가입이 성공적으로 완료되었습니다.');
-        } else {
-          alert('회원가입에 실패했습니다.');
-        }
-      } catch (error) {
-        console.error('서버 응답 JSON 파싱 오류:', error);
-      }
-    })
-    .catch((error) => {
-      console.error('회원가입 오류:', error);
-    });
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    alert(data.success);
+  })
+  .catch(error => {
+    console.error('클라이언트 오류:', error);
+    alert('회원가입 실패: ' + error.message);
   });
 });
 
