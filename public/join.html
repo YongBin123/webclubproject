@@ -13,33 +13,24 @@
     </nav>
 <div class="container">
     <h1>회원가입</h1>
-    <form>       
-        <div class="form-group">
-            <label for="fullname">이름:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="text" id="fullname" name="fullname" required autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="phone">전화번호:&nbsp;</label>
-            <input type="text" id="phone" name="phone" required autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="email">이메일:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="email" id="email" name="email" required autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="username">아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="text" id="username" name="username" required autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="password">비밀번호:&nbsp;</label>
-            <input type="password" id="password" name="password" required autocomplete="off">
-        </div>
-        <div class="form-group">
-            <label for="confirm-password">비밀번호 확인:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required autocomplete="off">
-        </div>
-        <button type="submit">가입하기</button>
-    </form>
+    <form id="registrationForm">
+        <label for="fullname">이름:</label>
+        <input type="text" id="fullname" name="fullname" required><br>
+    
+        <label for="phone">전화번호:</label>
+        <input type="text" id="phone" name="phone" required><br>
+    
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required><br>
+    
+        <label for="username">사용자 이름:</label>
+        <input type="text" id="username" name="username" required><br>
+    
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required><br>
+    
+        <input type="submit" value="가입하기">
+      </form>    
 </div>
 <script src="join.js"></script>
 </body>
