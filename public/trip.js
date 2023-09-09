@@ -1125,6 +1125,8 @@ function search() {
   var closeButton = document.getElementById('closeButton');
   closeButton.addEventListener('click', function() {
     searchResultsDiv.style.display = 'none';
+    // searchTerm 칸을 공백으로 설정
+    document.getElementById('searchTerm').value = '';
   });
 }
 
@@ -1181,6 +1183,95 @@ searchTermInput.addEventListener('click', function() {
   var searchResultsDiv = document.getElementById('searchResults');
   searchResultsDiv.innerHTML = '';
 });
+
+// 클라이언트 상태 변수 초기화
+let isLoggedIn = false;
+
+// 로그인 버튼 클릭 시 호출되는 함수
+function login() {
+  const id = document.getElementById('id').value;
+  const password = document.getElementById('password').value;
+
+  // 입력값이 비어있을 경우 로그인 시도를 막음
+  if (!id || !password) {
+    alert('아이디와 비밀번호를 입력하세요.');
+    return;
+  }
+
+  const userData = {
+    fullname: id,
+    password: password
+  };
+
+  fetch('http://localhost:5500/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+    .then(response => {
+      if (!response.ok) {
+        // 실패한 경우
+        return response.json().then(errorData => {
+          alert(`${errorData.message}`); // 실패 메시지를 알림창으로 표시
+          throw new Error(errorData.message);
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      // 로그인 성공 알림창
+      alert(`로그인 되었습니다. 오늘도 좋은 하루 되세요!`);
+
+      // 로그인 성공 시 화면에 아이디를 표시
+      const loginText = document.getElementById('loginText');
+      loginText.innerHTML = `${data.fullname}님께서 현재 로그인 중입니다. 
+        <button id="logoutButton" onclick="logout()">로그아웃</button>`;
+
+      // 입력 필드의 내용을 지우기
+      document.getElementById('id').value = '';
+      document.getElementById('password').value = '';
+
+      // 로그인 상태를 업데이트
+      isLoggedIn = true;
+    })
+    .catch(error => {
+      console.error('클라이언트 오류:', error);
+      // 실패 시에도 입력 필드의 내용을 지우고 포커스를 아이디 입력 필드로 이동
+      document.getElementById('id').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('id').focus();
+    });
+}
+
+// 로그아웃 버튼 클릭 시 호출되는 함수
+function logout() {
+  fetch('http://localhost:5500/logout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('로그아웃 실패');
+      }
+      return response.json();
+    })
+    .then(() => {
+      // 로그아웃 성공 시 화면에 메시지 표시
+      const loginText = document.getElementById('loginText');
+      loginText.textContent = '';
+      alert('로그아웃 되었습니다.'); // 알림창으로 로그아웃 성공 메시지 표시
+
+      // 로그인 상태를 업데이트
+      isLoggedIn = false;
+    })
+    .catch(error => {
+      console.error('클라이언트 오류:', error);
+    });
+}
 
 function memo() {
   location.href = "memo.html";
