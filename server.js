@@ -60,6 +60,44 @@ app.post('/register', (req, res) => {
   }
 });
 
+// 로그인 요청 처리
+app.post('/login', (req, res) => {
+  try {
+    const { fullname, password } = req.body;
+
+    if (!fullname || !password) {
+      // 아이디 또는 비밀번호가 누락된 경우
+      console.log('로그인 실패: 아이디 또는 비밀번호 누락');
+      res.status(400).json({ error: '로그인 실패', message: '아이디 또는 비밀번호가 누락되었습니다.' });
+      return;
+    }
+
+    // 데이터베이스에서 회원 정보 확인
+    const query = `SELECT * FROM users WHERE fullname = ? AND password = ?`;
+    db.query(query, [fullname, password], (err, result) => {
+      if (err) {
+        console.error('데이터베이스 오류:', err);
+        res.status(500).json({ error: '로그인 실패', message: '데이터베이스 오류 발생', errorDetails: err.message });
+      } else if (result.length > 0) {
+        console.log('로그인 성공');
+        const user = result[0];
+        res.json({ fullname: user.fullname });
+      } else {
+        console.log('로그인 실패: 일치하는 회원 정보 없음');
+        res.status(400).json({ error: '로그인 실패', message: '일치하는 회원 정보가 없습니다. 아아디와 비밀번호를 다시 한 번 확인해주세요.' });
+      }
+    });
+  } catch (error) {
+    console.error('서버 오류:', error);
+    res.status(500).json({ error: '서버 오류', message: '서버 오류 발생', errorDetails: error.message });
+  }
+});
+
+// 로그아웃 엔드포인트
+app.post('/logout', (req, res) => {
+  res.json({ message: '로그아웃되었습니다.' });
+});
+
 app.listen(port, () => {
   console.log(`서버가 ${port} 포트에서 실행 중입니다.`);
 });
