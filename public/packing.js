@@ -94,6 +94,5 @@ function getImagePath(item) {
 }
 
 function goBack() {
-  window.open("trip.html");
-  window.close();
+  window.location.href = "trip.html";
 }
